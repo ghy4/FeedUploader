@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AIParser")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b984f82a6c7a1b7a7c9b9523512151af86e1b61")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b8c9959f05be2d6636b509988d3080762219fd4")]
 [assembly: System.Reflection.AssemblyProductAttribute("AIParser")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AIParser")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
