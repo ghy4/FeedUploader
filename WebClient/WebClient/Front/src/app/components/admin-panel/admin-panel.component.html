@@ -1,0 +1,535 @@
+<div class="container-fluid">
+  <!-- Page Header -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h2 class="h3 mb-1">Admin Panel</h2>
+          <p class="text-muted mb-0">Gestionează utilizatori, configurări și monitorizează sistemul</p>
+        </div>
+        <div>
+          <button class="btn btn-outline-secondary btn-modern me-2" (click)="backupSystem()">
+            <i class="bi bi-download me-2"></i>
+            Backup Sistem
+          </button>
+          <button class="btn btn-primary-modern btn-modern" (click)="openAddUserModal()">
+            <i class="bi bi-person-plus me-2"></i>
+            Adaugă Utilizator
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Status Cards -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="dashboard-card">
+        <div class="position-relative">
+          <i class="bi bi-people dashboard-card-icon text-primary"></i>
+          <div>
+            <h4 class="dashboard-card-value text-primary">{{ systemStats.totalUsers }}</h4>
+            <p class="dashboard-card-label">Utilizatori Activi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="dashboard-card">
+        <div class="position-relative">
+          <i class="bi bi-key dashboard-card-icon text-success"></i>
+          <div>
+            <h4 class="dashboard-card-value text-success">{{ systemStats.activeTokens }}</h4>
+            <p class="dashboard-card-label">Token-uri Active</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="dashboard-card">
+        <div class="position-relative">
+          <i class="bi bi-upload dashboard-card-icon text-info"></i>
+          <div>
+            <h4 class="dashboard-card-value text-info">{{ systemStats.totalExports }}</h4>
+            <p class="dashboard-card-label">Exporturi Luna Aceasta</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="dashboard-card">
+        <div class="position-relative">
+          <i class="bi bi-hdd dashboard-card-icon text-warning"></i>
+          <div>
+            <h4 class="dashboard-card-value text-warning">{{ systemStats.storageUsed }}%</h4>
+            <p class="dashboard-card-label">Spațiu Utilizat</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Tabs -->
+  <div class="row">
+    <div class="col-12">
+      <div class="modern-card">
+        <div class="card-header-modern">
+          <ul class="nav nav-tabs card-header-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" 
+                      [class.active]="activeTab === 'users'"
+                      (click)="setActiveTab('users')"
+                      type="button">
+                <i class="bi bi-people me-2"></i>
+                Utilizatori & Roluri
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" 
+                      [class.active]="activeTab === 'api'"
+                      (click)="setActiveTab('api')"
+                      type="button">
+                <i class="bi bi-key me-2"></i>
+                API & Token-uri
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" 
+                      [class.active]="activeTab === 'system'"
+                      (click)="setActiveTab('system')"
+                      type="button">
+                <i class="bi bi-gear me-2"></i>
+                Configurări Sistem
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" 
+                      [class.active]="activeTab === 'history'"
+                      (click)="setActiveTab('history')"
+                      type="button">
+                <i class="bi bi-clock-history me-2"></i>
+                Istoric & Audit
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-body-modern">
+          <!-- Users & Roles Tab -->
+          <div *ngIf="activeTab === 'users'">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="mb-0">Gestionare Utilizatori</h5>
+              <div class="d-flex gap-2">
+                <div class="input-group" style="width: 300px;">
+                  <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                  </span>
+                  <input type="text" 
+                         class="form-control" 
+                         placeholder="Caută utilizatori..."
+                         [(ngModel)]="userSearchTerm"
+                         (input)="filterUsers()">
+                </div>
+                <select class="form-select" [(ngModel)]="roleFilter" (change)="filterUsers()">
+                  <option value="">Toate rolurile</option>
+                  <option value="admin">Administrator</option>
+                  <option value="manager">Manager</option>
+                  <option value="user">Utilizator</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-modern">
+                <thead>
+                  <tr>
+                    <th>Utilizator</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Status</th>
+                    <th>Ultima Activitate</th>
+                    <th width="120">Acțiuni</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of filteredUsers">
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3"
+                             style="width: 40px; height: 40px;">
+                          {{ getUserInitials(user.name) }}
+                        </div>
+                        <div>
+                          <div class="fw-semibold">{{ user.name }}</div>
+                          <small class="text-muted">ID: {{ user.id }}</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                      <span class="badge" [class]="getRoleBadgeClass(user.role)">
+                        {{ getRoleLabel(user.role) }}
+                      </span>
+                    </td>
+                    <td>
+                      <span [class]="getUserStatusClass(user.status)">
+                        {{ getUserStatusLabel(user.status) }}
+                      </span>
+                    </td>
+                    <td>
+                      <small class="text-muted">{{ user.lastActivity | date:'dd/MM/yyyy HH:mm' }}</small>
+                    </td>
+                    <td>
+                      <div class="d-flex gap-1">
+                        <button class="btn btn-sm btn-outline-primary" 
+                                (click)="editUser(user)"
+                                title="Editează">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning" 
+                                (click)="toggleUserStatus(user)"
+                                title="Toggle Status">
+                          <i class="bi" [class.bi-pause]="user.status === 'active'" [class.bi-play]="user.status !== 'active'"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" 
+                                (click)="deleteUser(user)"
+                                title="Șterge"
+                                [disabled]="user.role === 'admin'">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- API & Tokens Tab -->
+          <div *ngIf="activeTab === 'api'">
+            <div class="row">
+              <div class="col-lg-8">
+                <h5 class="mb-4">Configurare Token-uri API Marketplace</h5>
+                
+                <div class="row">
+                  <div class="col-md-6 mb-4" *ngFor="let marketplace of marketplaces">
+                    <div class="border rounded-3 p-4 h-100">
+                      <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                          <h6 class="mb-1">{{ marketplace.name }}</h6>
+                          <small class="text-muted">{{ marketplace.description }}</small>
+                        </div>
+                        <span class="badge" [class.bg-success]="marketplace.connected" [class.bg-secondary]="!marketplace.connected">
+                          {{ marketplace.connected ? 'Conectat' : 'Deconectat' }}
+                        </span>
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label class="form-label small fw-semibold">Token API:</label>
+                        <div class="input-group">
+                          <input type="password" 
+                                 class="form-control" 
+                                 [value]="marketplace.token"
+                                 placeholder="Introdu token-ul API...">
+                          <button class="btn btn-outline-secondary" type="button">
+                            <i class="bi bi-eye"></i>
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label class="form-label small fw-semibold">URL API:</label>
+                        <input type="url" 
+                               class="form-control" 
+                               [value]="marketplace.apiUrl"
+                               placeholder="https://api.marketplace.com">
+                      </div>
+                      
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-primary" (click)="testConnection(marketplace)">
+                          <i class="bi bi-wifi me-1"></i>
+                          Test Conexiune
+                        </button>
+                        <button class="btn btn-sm btn-outline-success" (click)="saveMarketplaceConfig(marketplace)">
+                          <i class="bi bi-check me-1"></i>
+                          Salvează
+                        </button>
+                      </div>
+                      
+                      <div *ngIf="marketplace.lastTest" class="mt-3 pt-3 border-top">
+                        <small class="text-muted">
+                          <strong>Ultimul test:</strong> {{ marketplace.lastTest | date:'dd/MM/yyyy HH:mm' }}
+                          <span [class.text-success]="marketplace.testResult === 'success'" 
+                                [class.text-danger]="marketplace.testResult === 'error'">
+                            {{ marketplace.testResult === 'success' ? '✓ Succes' : '✗ Eșuat' }}
+                          </span>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4">
+                <h5 class="mb-4">Token-uri Active</h5>
+                <div class="list-group">
+                  <div *ngFor="let token of activeTokens" class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                      <div>
+                        <h6 class="mb-1">{{ token.name }}</h6>
+                        <p class="mb-1 small text-muted">{{ token.marketplace }}</p>
+                        <small class="text-muted">Creat: {{ token.created | date:'dd/MM/yyyy' }}</small>
+                      </div>
+                      <div class="text-end">
+                        <small class="text-muted d-block">Expiră în {{ token.daysUntilExpiry }} zile</small>
+                        <button class="btn btn-sm btn-outline-danger mt-1" (click)="revokeToken(token)">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Configuration Tab -->
+          <div *ngIf="activeTab === 'system'">
+            <div class="row">
+              <div class="col-md-6">
+                <h5 class="mb-4">Configurări Generale</h5>
+                
+                <div class="mb-4">
+                  <label class="form-label fw-semibold">Nume Aplicație:</label>
+                  <input type="text" class="form-control" [(ngModel)]="systemConfig.appName">
+                </div>
+                
+                <div class="mb-4">
+                  <label class="form-label fw-semibold">Număr maxim de produse per export:</label>
+                  <input type="number" class="form-control" [(ngModel)]="systemConfig.maxProductsPerExport">
+                </div>
+                
+                <div class="mb-4">
+                  <label class="form-label fw-semibold">Timeout export (secunde):</label>
+                  <input type="number" class="form-control" [(ngModel)]="systemConfig.exportTimeout">
+                </div>
+                
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="autoRetry" [(ngModel)]="systemConfig.autoRetryFailedExports">
+                    <label class="form-check-label" for="autoRetry">
+                      Auto-retry exporturi eșuate
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="emailNotifications" [(ngModel)]="systemConfig.emailNotifications">
+                    <label class="form-check-label" for="emailNotifications">
+                      Notificări email pentru exporturi
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <h5 class="mb-4">Configurări Email</h5>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Server SMTP:</label>
+                  <input type="text" class="form-control" [(ngModel)]="emailConfig.smtpServer">
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Port:</label>
+                  <input type="number" class="form-control" [(ngModel)]="emailConfig.port">
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Username:</label>
+                  <input type="text" class="form-control" [(ngModel)]="emailConfig.username">
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Parolă:</label>
+                  <input type="password" class="form-control" [(ngModel)]="emailConfig.password">
+                </div>
+                
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="useSSL" [(ngModel)]="emailConfig.useSSL">
+                    <label class="form-check-label" for="useSSL">
+                      Folosește SSL/TLS
+                    </label>
+                  </div>
+                </div>
+                
+                <button class="btn btn-outline-primary btn-modern" (click)="testEmailConfig()">
+                  <i class="bi bi-envelope me-2"></i>
+                  Test Email
+                </button>
+              </div>
+            </div>
+            
+            <div class="border-top pt-4 mt-4">
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary-modern btn-modern" (click)="saveSystemConfig()">
+                  <i class="bi bi-check me-2"></i>
+                  Salvează Configurări
+                </button>
+                <button class="btn btn-outline-secondary btn-modern" (click)="resetToDefaults()">
+                  <i class="bi bi-arrow-counterclockwise me-2"></i>
+                  Reset la Default
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- History & Audit Tab -->
+          <div *ngIf="activeTab === 'history'">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="mb-0">Istoric Feed-uri și Exporturi</h5>
+              <div class="d-flex gap-2">
+                <input type="date" class="form-control" [(ngModel)]="historyDateFrom">
+                <input type="date" class="form-control" [(ngModel)]="historyDateTo">
+                <button class="btn btn-outline-primary" (click)="filterHistory()">
+                  <i class="bi bi-funnel me-1"></i>
+                  Filtrează
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-modern">
+                <thead>
+                  <tr>
+                    <th>Data/Ora</th>
+                    <th>Utilizator</th>
+                    <th>Acțiune</th>
+                    <th>Detalii</th>
+                    <th>Status</th>
+                    <th>Durată</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let entry of filteredHistory">
+                    <td>
+                      <div>{{ entry.timestamp | date:'dd/MM/yyyy' }}</div>
+                      <small class="text-muted">{{ entry.timestamp | date:'HH:mm:ss' }}</small>
+                    </td>
+                    <td>
+                      <div class="fw-semibold">{{ entry.userName }}</div>
+                      <small class="text-muted">{{ entry.userEmail }}</small>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <i class="bi me-2" [class]="getActionIcon(entry.action)"></i>
+                        {{ getActionLabel(entry.action) }}
+                      </div>
+                    </td>
+                    <td>
+                      <div>{{ entry.details }}</div>
+                      <small class="text-muted" *ngIf="entry.itemCount">{{ entry.itemCount }} elemente</small>
+                    </td>
+                    <td>
+                      <span [class]="getHistoryStatusClass(entry.status)">
+                        {{ getHistoryStatusLabel(entry.status) }}
+                      </span>
+                    </td>
+                    <td>
+                      <small class="text-muted">{{ entry.duration || 'N/A' }}</small>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination for history -->
+            <nav class="mt-4">
+              <ul class="pagination pagination-sm justify-content-center">
+                <li class="page-item">
+                  <button class="page-link">Anterior</button>
+                </li>
+                <li class="page-item active">
+                  <button class="page-link">1</button>
+                </li>
+                <li class="page-item">
+                  <button class="page-link">2</button>
+                </li>
+                <li class="page-item">
+                  <button class="page-link">3</button>
+                </li>
+                <li class="page-item">
+                  <button class="page-link">Următorul</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Modal -->
+  <div class="modal fade" id="userModal" tabindex="-1" *ngIf="showUserModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <i class="bi bi-person me-2"></i>
+            {{ editingUser ? 'Editează Utilizator' : 'Adaugă Utilizator Nou' }}
+          </h5>
+          <button type="button" class="btn-close" (click)="closeUserModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Nume complet:</label>
+              <input type="text" class="form-control" [(ngModel)]="userForm.name" name="name">
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Email:</label>
+              <input type="email" class="form-control" [(ngModel)]="userForm.email" name="email">
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Rol:</label>
+              <select class="form-select" [(ngModel)]="userForm.role" name="role">
+                <option value="user">Utilizator</option>
+                <option value="manager">Manager</option>
+                <option value="admin">Administrator</option>
+              </select>
+            </div>
+            
+            <div class="mb-3" *ngIf="!editingUser">
+              <label class="form-label">Parolă:</label>
+              <input type="password" class="form-control" [(ngModel)]="userForm.password" name="password">
+            </div>
+            
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="userForm.active" name="active" id="userActive">
+                <label class="form-check-label" for="userActive">
+                  Cont activ
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeUserModal()">
+            Anulează
+          </button>
+          <button type="button" class="btn btn-primary" (click)="saveUser()">
+            {{ editingUser ? 'Actualizează' : 'Creează' }} Utilizator
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
