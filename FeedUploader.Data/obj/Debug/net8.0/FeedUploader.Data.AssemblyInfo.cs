@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FeedUploader.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+351394bc2623b599c77108337e30cd2f4b5297d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a54665390b61b8eda040c473c136607eb3e73cad")]
 [assembly: System.Reflection.AssemblyProductAttribute("FeedUploader.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FeedUploader.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
