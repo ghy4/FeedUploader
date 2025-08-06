@@ -1,0 +1,15 @@
+D:\Practica\Ex\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.deps.json
+D:\Practica\Ex\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.runtimeconfig.json
+D:\Practica\Ex\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.dll
+D:\Practica\Ex\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.pdb
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.csproj.AssemblyReference.cache
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.AssemblyInfoInputs.cache
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.AssemblyInfo.cs
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.csproj.CoreCompileInputs.cache
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.sourcelink.json
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.dll
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\refint\FeedUploader.Data.dll
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.pdb
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.genruntimeconfig.cache
+D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\ref\FeedUploader.Data.dll
