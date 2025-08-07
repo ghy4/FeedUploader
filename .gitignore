@@ -45,3 +45,7 @@ Thumbs.db
 node_modules/
  
  
+FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.AssemblyInfoInputs.cache
+AIParser/obj/Debug/net8.0/AIParser.AssemblyInfo.cs
+AIParser/obj/Debug/net8.0/AIParser.AssemblyInfoInputs.cache
+FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.AssemblyInfo.cs
