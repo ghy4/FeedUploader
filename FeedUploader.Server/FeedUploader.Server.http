@@ -1,0 +1,6 @@
+@FeedUploader.Server_HostAddress = http://localhost:5122
+
+GET {{FeedUploader.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
