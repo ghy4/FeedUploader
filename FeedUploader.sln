@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Front", "WebClient\Front\Front.esproj", "{4583879B-5172-4D64-8F35-820DA28D0C64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedUploader.Data", "FeedUploader.Data\FeedUploader.Data.csproj", "{02768D97-03FF-4164-A276-B631C67EDB1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedUploader.Data", "FeedUploader.Data\FeedUploader.Data.csproj", "{02768D97-03FF-4164-A276-B631C67EDB1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedUploader.Server", "FeedUploader.Server\FeedUploader.Server.csproj", "{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{02768D97-03FF-4164-A276-B631C67EDB1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02768D97-03FF-4164-A276-B631C67EDB1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02768D97-03FF-4164-A276-B631C67EDB1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
