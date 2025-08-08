@@ -1,0 +1,13 @@
+D:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\AIParser.deps.json
+D:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\AIParser.dll
+D:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\AIParser.pdb
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.csproj.AssemblyReference.cache
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.AssemblyInfoInputs.cache
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.AssemblyInfo.cs
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.csproj.CoreCompileInputs.cache
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.sourcelink.json
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.dll
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\refint\AIParser.dll
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.pdb
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\ref\AIParser.dll

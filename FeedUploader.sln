@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedUploader.Data", "FeedUp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedUploader.Server", "FeedUploader.Server\FeedUploader.Server.csproj", "{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIParser", "AIParser\AIParser.csproj", "{CBFCDFA5-6536-1598-2B94-8692BAF7578F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{02768D97-03FF-4164-A276-B631C67EDB1A} = {02768D97-03FF-4164-A276-B631C67EDB1A}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,10 +30,10 @@ Global
 		{02768D97-03FF-4164-A276-B631C67EDB1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02768D97-03FF-4164-A276-B631C67EDB1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02768D97-03FF-4164-A276-B631C67EDB1A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AED9C5C7-0DBF-4684-AA6F-116DAE7653AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBFCDFA5-6536-1598-2B94-8692BAF7578F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBFCDFA5-6536-1598-2B94-8692BAF7578F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBFCDFA5-6536-1598-2B94-8692BAF7578F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBFCDFA5-6536-1598-2B94-8692BAF7578F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
