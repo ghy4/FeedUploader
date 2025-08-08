@@ -44,6 +44,9 @@ testem.log
 Thumbs.db
 node_modules/
  
+FeedUploader.Data/bin
+FeedUploader.Data/obj
+FeedUploader.Data/packages
  
 FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.AssemblyInfoInputs.cache
 AIParser/obj/Debug/net8.0/AIParser.AssemblyInfo.cs
