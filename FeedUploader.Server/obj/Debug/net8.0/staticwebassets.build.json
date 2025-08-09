@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "39g8TPBytoD92cYUABu8MEjREH+DJgSchdr2JdClJOk=",
-  "Source": "FeedUploader.Server",
-  "BasePath": "_content/FeedUploader.Server",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"10zpUXuPaahSvGS/scMUyim5Fdtl7FvIdW41CJv0/gw=","Source":"FeedUploader.Server","BasePath":"_content/FeedUploader.Server","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
