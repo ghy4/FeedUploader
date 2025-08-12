@@ -11,6 +11,8 @@ namespace AIParser
         private readonly HttpClient _httpClient;
         private readonly string _apiKey =  "kerty";
 
+        //public async Task<string> PromptBuilderForAttributes()
+
         public AIService(IConfiguration configuration)
         {
             //_apiKey = configuration["OpenAI:ApiKey"] ?? throw new Exception("OpenAI API key not found in configuration.");
@@ -29,7 +31,7 @@ namespace AIParser
                 {
                     new { role = "user", content = aiRequest.Prompt }
                 },
-                temperature = 0.7,
+                temperature = 0.3,
                 max_tokens = aiRequest.MaxTokens
             };
 
