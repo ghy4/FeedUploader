@@ -84,3 +84,6 @@ FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.AssemblyInfo.cs
 /FeedUploader.Server/obj/Debug/net8.0/FeedUploader.Server.sourcelink.json
 /FeedUploader.sln
 /FeedUploader.Server/obj/Debug/net8.0/FeedUploader.Server.sourcelink.json
+/AIParser/bin/Debug/net8.0
+/AIParser/obj/Debug/net8.0
+/FeedUploader.sln
