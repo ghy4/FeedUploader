@@ -8,10 +8,8 @@ namespace FeedUploader.Data.Services.Interfaces
 {
 	public interface IService<T>
 	{
-		public Task<ICollection<T>> GetAll();
 		public Task<T?> GetById(int id);
 		public Task<bool> RemoveById(int id);
-		public Task<bool> Create(T entity);
 		public Task<bool> Update(T entity);
 	}
 }

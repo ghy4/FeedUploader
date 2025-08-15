@@ -4,6 +4,7 @@ namespace FeedUploader.Data.Services.Interfaces
 {
 	public interface IProductService : IService<Product>
 	{
-		public Task<ICollection<Product>> GetProductsByCategory(string category);
+		public Task<ICollection<Product>> GetAll();
+		Task<bool> Create(Product entity, int userId);
 	}
 }

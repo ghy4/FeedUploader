@@ -13,5 +13,6 @@ namespace FeedUploader.Data.Models
 		public string Password { get; set; } = string.Empty;
 		public string ContactNumber { get; set; } = string.Empty;
 		public string Role { get; set; } = "User";
+		public List<Product> Products { get; set; } = new List<Product>();
 	}
 }

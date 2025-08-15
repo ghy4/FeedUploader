@@ -13,42 +13,52 @@ namespace FeedUploader.Data.Services
 			_dbContext = dbContext;
 		}
 
-		public async Task<bool> Create(Product entity)
+		public async Task<bool> Create(Product entity, int userId)
 		{
+			var user = await _dbContext.Users.FindAsync(userId);
+			if (user == null) return false;
+
+			entity.UserId = userId;
 			await _dbContext.Products.AddAsync(entity);
 			return await _dbContext.SaveChangesAsync() >= 1;
 		}
 
 		public async Task<ICollection<Product>> GetAll()
 		{
-			var products = await _dbContext.Products.ToListAsync();
-			return products;
+			return await _dbContext.Products
+				.Include(p => p.Attributes)
+				.ThenInclude(pa => pa.Attribute)
+				.ToListAsync();
+		}
+
+		public async Task<ICollection<Product>> GetByUserId(int userId)
+		{
+			return await _dbContext.Products
+				.Include(p => p.Attributes)
+				.ThenInclude(pa => pa.Attribute)
+				.Where(p => p.UserId == userId)
+				.ToListAsync();
 		}
 
 		public async Task<Product?> GetById(int id)
 		{
-			var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
-			return product;
-		}
-
-		public async Task<ICollection<Product>> GetProductsByCategory(string category)
-		{
-			var products = await _dbContext.Products.Where(x => x.Category == category).ToListAsync();
-			return products;
-		}
-
-		public async Task<bool> RemoveById(int id)
-		{
-			var productToRemove = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
-			if (productToRemove == null)
-				return false;
-			_dbContext.Remove(productToRemove);
-			return await _dbContext.SaveChangesAsync() >= 1;
+			return await _dbContext.Products
+				.Include(p => p.Attributes)
+				.ThenInclude(pa => pa.Attribute)
+				.FirstOrDefaultAsync(p => p.Id == id);
 		}
 
 		public async Task<bool> Update(Product entity)
 		{
 			_dbContext.Products.Attach(entity);
+			return await _dbContext.SaveChangesAsync() >= 1;
+		}
+
+		public async Task<bool> RemoveById(int id)
+		{
+			var product = await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+			if (product == null) return false;
+			_dbContext.Products.Remove(product);
 			return await _dbContext.SaveChangesAsync() >= 1;
 		}
 	}
