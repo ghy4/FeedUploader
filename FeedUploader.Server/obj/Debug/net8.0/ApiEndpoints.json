@@ -1,5 +1,104 @@
 [
   {
+    "ContainingType": "FeedUploader.Server.Controllers.AttributeController",
+    "Method": "CreateAttribute",
+    "RelativePath": "api/Attribute",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "FeedUploader.Server.DTOModels.CreateAttributeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.AttributeController",
+    "Method": "UpdateAttribute",
+    "RelativePath": "api/Attribute/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "FeedUploader.Server.DTOModels.UpdateAttributeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.AttributeController",
+    "Method": "DeleteAttribute",
+    "RelativePath": "api/Attribute/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.AttributeController",
+    "Method": "GetAttributeById",
+    "RelativePath": "api/Attribute/Attribute/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FeedUploader.Server.DTOModels.AttributeDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.AttributeController",
+    "Method": "GetAttributes",
+    "RelativePath": "api/Attribute/Attributes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FeedUploader.Server.DTOModels.AttributeDTO, FeedUploader.Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "FeedUploader.Server.Controllers.ProductController",
     "Method": "PostProduct",
     "RelativePath": "api/Product",
@@ -11,6 +110,11 @@
         "Name": "product",
         "Type": "FeedUploader.Server.DTOModels.CreateProductDTO",
         "IsRequired": true
+      },
+      {
+        "Name": "userid",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -97,6 +201,85 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.ProductAttributeController",
+    "Method": "Create",
+    "RelativePath": "api/ProductAttribute",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "FeedUploader.Server.DTOModels.CreateProductAttributeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.ProductAttributeController",
+    "Method": "GetById",
+    "RelativePath": "api/ProductAttribute/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FeedUploader.Server.DTOModels.ProductAttributeDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.ProductAttributeController",
+    "Method": "Update",
+    "RelativePath": "api/ProductAttribute/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "FeedUploader.Server.DTOModels.UpdateProductAttributeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.ProductAttributeController",
+    "Method": "Delete",
+    "RelativePath": "api/ProductAttribute/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FeedUploader.Server.Controllers.UserController",

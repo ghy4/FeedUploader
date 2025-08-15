@@ -16,6 +16,12 @@ namespace FeedUploader.Server.Automapper
 				cfg.CreateMap<Product, ProductDTO>();
 				cfg.CreateMap<CreateProductDTO, Product>();
 				cfg.CreateMap<UpdateProductDTO, Product>();
+				cfg.CreateMap<Data.Models.Attribute, AttributeDTO>();
+				cfg.CreateMap<CreateAttributeDTO, Data.Models.Attribute>();
+				cfg.CreateMap<UpdateAttributeDTO, Data.Models.Attribute>();
+				cfg.CreateMap<ProductAttribute, ProductAttributeDTO>();
+				cfg.CreateMap<CreateProductAttributeDTO, ProductAttribute>();
+				cfg.CreateMap<UpdateProductAttributeDTO, ProductAttribute>();
 			}, new LoggerFactory());
 		}
 	}

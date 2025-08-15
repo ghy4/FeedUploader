@@ -50,7 +50,7 @@ namespace FeedUploader.Server.Controllers
 			}
 		}
 		[HttpPost]
-		public async Task<ActionResult> PostProduct(CreateProductDTO product)
+		public async Task<ActionResult> PostProduct(CreateProductDTO product, int userid)
 		{
 			if (!ModelState.IsValid)
 				return BadRequest("Invalid product data");
@@ -58,7 +58,7 @@ namespace FeedUploader.Server.Controllers
 			try
 			{
 				var productEntity = _mapper.Map<Product>(product);
-				if (!await _productService.Create(productEntity))
+				if (!await _productService.Create(productEntity, userid))
 					return StatusCode(500, "Could not add product");
 				var productDto = _mapper.Map<ProductDTO>(productEntity);
 				return CreatedAtAction(nameof(GetProductById), new { id = productDto.Id }, productDto);
