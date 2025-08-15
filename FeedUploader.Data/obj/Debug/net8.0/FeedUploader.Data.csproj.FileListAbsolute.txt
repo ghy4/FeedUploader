@@ -13,3 +13,18 @@ D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\refint\FeedUploader.Data.dll
 D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.pdb
 D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.genruntimeconfig.cache
 D:\Practica\Ex\FeedUploader.Data\obj\Debug\net8.0\ref\FeedUploader.Data.dll
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.deps.json
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.runtimeconfig.json
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.dll
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\bin\Debug\net8.0\FeedUploader.Data.pdb
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.csproj.AssemblyReference.cache
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.AssemblyInfoInputs.cache
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.AssemblyInfo.cs
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.csproj.CoreCompileInputs.cache
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.sourcelink.json
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.dll
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\refint\FeedUploader.Data.dll
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.pdb
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\FeedUploader.Data.genruntimeconfig.cache
+D:\Visual Studio repo\git\FeedUploader\FeedUploader.Data\obj\Debug\net8.0\ref\FeedUploader.Data.dll
