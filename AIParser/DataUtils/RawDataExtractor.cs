@@ -1,12 +1,13 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OfficeOpenXml;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Text;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Xml;
 namespace AIParser.DataUtils
 {
@@ -14,7 +15,7 @@ namespace AIParser.DataUtils
 
     public static class RawDataExtractor
     {
-        public static RawFeedData ExtractFromCsv(string path, char separator = ',')
+        private static RawFeedData ExtractFromCsv(string path, char separator = ',')
         {
             var lines = File.ReadAllLines(path, Encoding.UTF8);
             var headers = lines[0].Split(separator).ToList();
@@ -29,7 +30,7 @@ namespace AIParser.DataUtils
             };
         }
 
-        public static RawFeedData ExtractFromXml(string path, string productNodeName = "product")
+        private static RawFeedData ExtractFromXml(string path, string productNodeName = "product")
         {
             var doc = new XmlDocument();
             doc.Load(path);
@@ -68,7 +69,7 @@ namespace AIParser.DataUtils
             };
         }
 
-        public static RawFeedData ExtractFromXlsx(string path)
+        private static RawFeedData ExtractFromXlsx(string path)
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(path));
@@ -99,6 +100,57 @@ namespace AIParser.DataUtils
             {
                 Headers = headers,
                 Rows = rows
+            };
+        }
+        private static RawFeedData ExtractFromJson(string path)
+        {
+            string jsonContent = File.ReadAllText(path);
+            var elements = JsonSerializer.Deserialize<List<Dictionary<string, JsonElement>>>(jsonContent);
+
+            if (elements == null || elements.Count == 0)
+                return new RawFeedData();
+
+            var headers = elements
+                .SelectMany(dict => dict.Keys)
+                .Distinct()
+                .ToList();
+
+            var rows = new List<List<string>>();
+
+            foreach (var dict in elements)
+            {
+                var row = new List<string>();
+                foreach (var header in headers)
+                {
+                    if (dict.TryGetValue(header, out var value))
+                    {
+                        row.Add(value.ToString());
+                    }
+                    else
+                    {
+                        row.Add(""); // lipsă valoare
+                    }
+                }
+                rows.Add(row);
+            }
+
+            return new RawFeedData
+            {
+                Headers = headers,
+                Rows = rows
+            };
+        }
+
+        public static RawFeedData ExtractAuto(string path)
+        {
+            var ext = Path.GetExtension(path).ToLower();
+            return ext switch
+            {
+                ".csv" => ExtractFromCsv(path),
+                ".xml" => ExtractFromXml(path),
+                ".xlsx" => ExtractFromXlsx(path),
+                ".json" => ExtractFromJson(path),
+                _ => throw new NotSupportedException($"Formatul {ext} nu este suportat.")
             };
         }
     }

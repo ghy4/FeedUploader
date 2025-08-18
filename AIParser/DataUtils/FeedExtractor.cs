@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 using FeedUploader.Data.Models;
 using System.Globalization;
 
-namespace AIParser
+namespace AIParser.DataUtils
 {
 
 
-    internal class FeedExtractor
+    public static class FeedExtractor
     {
+        public static List<Product> ExtractProducts(RawFeedData rawData)
+        {
+            if (rawData == null || rawData.Headers.Count == 0 || rawData.Rows.Count == 0)
+            {
+                throw new ArgumentException("Raw feed data is empty or invalid.");
+            }
+            var keys = rawData.Headers;
+            var products = new List<Product>();
+            foreach (var values in rawData.Rows)
+            {
+                var product = ExtractProduct(keys, values);
+                products.Add(product);
+            }
+            return products;
+        }
         public static Product ExtractProduct(List<string> keys, List<string> values)
         {
             if (IsContaktFeed(keys))

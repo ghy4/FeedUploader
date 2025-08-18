@@ -8,7 +8,7 @@ namespace AIParser.MappingTools
 {
     internal interface IMapper
     {
-        public MapModel MapModel(string model, List<string> markets);
-        public MapModel MapModel(List<string> models, string market);
+        public Task<MapModel> MapModel(string model, List<string> markets);
+        public Task<MapModel> MapModel(List<string> models, string market);
     }
 }
