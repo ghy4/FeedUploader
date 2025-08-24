@@ -103,3 +103,16 @@ FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.AssemblyInfo.cs
 /FeedUploader.Server/obj/Debug/net8.0/EndpointInfo/FeedUploader.Server.json
 /FeedUploader.Server/obj/project.assets.json
 /FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.genruntimeconfig.cache
+AIParser/obj/AIParser.csproj.nuget.g.targets
+AIParser/obj/project.packagespec.json
+AIParser/obj/rider.project.restore.info
+FeedUploader.Data/obj/FeedUploader.Data.csproj.nuget.g.targets
+FeedUploader.Server/obj/Debug/net8.0/FeedUploader.Server.assets.cache
+FeedUploader.Server/obj/Debug/net8.0/FeedUploader.Server.csproj.AssemblyReference.cache
+FeedUploader.Server/obj/Debug/net8.0/FeedUploader.Server.GeneratedMSBuildEditorConfig.editorconfig
+FeedUploader.Server/obj/FeedUploader.Server.csproj.nuget.dgspec.json
+FeedUploader.Server/obj/FeedUploader.Server.csproj.nuget.g.props
+FeedUploader.Server/obj/FeedUploader.Server.csproj.nuget.g.targets
+FeedUploader.Server/obj/project.nuget.cache
+FeedUploader.Server/obj/project.packagespec.json
+FeedUploader.Server/obj/rider.project.restore.info

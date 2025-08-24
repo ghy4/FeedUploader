@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Server\\FeedUploader.Server.csproj": {}
+    "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Server/FeedUploader.Server.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj": {
+    "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Data/FeedUploader.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj",
+        "projectUniqueName": "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Data/FeedUploader.Data.csproj",
         "projectName": "FeedUploader.Data",
-        "projectPath": "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj",
-        "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Data\\obj\\",
+        "projectPath": "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Data/FeedUploader.Data.csproj",
+        "packagesPath": "/Users/smesnoimaxim/.nuget/packages/",
+        "outputPath": "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Data/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/smesnoimaxim/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -107,40 +100,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.406/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Server\\FeedUploader.Server.csproj": {
+    "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Server/FeedUploader.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Server\\FeedUploader.Server.csproj",
+        "projectUniqueName": "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Server/FeedUploader.Server.csproj",
         "projectName": "FeedUploader.Server",
-        "projectPath": "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Server\\FeedUploader.Server.csproj",
-        "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Server\\obj\\",
+        "projectPath": "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Server/FeedUploader.Server.csproj",
+        "packagesPath": "/Users/smesnoimaxim/.nuget/packages/",
+        "outputPath": "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Server/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/smesnoimaxim/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj": {
-                "projectPath": "D:\\Visual Studio repo\\git\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj"
+              "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Data/FeedUploader.Data.csproj": {
+                "projectPath": "/Users/smesnoimaxim/Downloads/shrd/proiectPIU/FeedUploader/FeedUploader.Data/FeedUploader.Data.csproj"
               }
             }
           }
@@ -154,8 +141,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -203,7 +189,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.406/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

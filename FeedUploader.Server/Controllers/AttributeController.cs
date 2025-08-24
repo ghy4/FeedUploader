@@ -13,9 +13,9 @@ namespace FeedUploader.Server.Controllers
 	public class AttributeController : Controller
 	{
 		private readonly IAttributeService _attributeService;
-		private readonly IMapper _mapper;
+		private readonly IMapperService _mapper;
 
-		public AttributeController(IAttributeService attributeService, IMapper mapper)
+		public AttributeController(IAttributeService attributeService, IMapperService mapper)
 		{
 			_attributeService = attributeService;
 			_mapper = mapper;

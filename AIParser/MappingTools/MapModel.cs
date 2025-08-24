@@ -10,7 +10,10 @@ namespace AIParser.MappingTools
     public class MapModel
     {
         [Key]
-        public string Market { get; set; } = string.Empty;
-        public string Model { get; set; } = string.Empty;
+        public int Id { get; set; }                // identificator unic al mapării
+        public string SourceField { get; set; } = string.Empty; // ex: "Cod produs", "Brand"
+        public string DestinationField { get; set; } = string.Empty; // ex: "Model", "Manufacturer"
+        public string Market { get; set; } = string.Empty;   // ex: "Contakt", "Interlink", "Emag", dat de utilizator
+        public int? UserId { get; set; }           
     }
 }
