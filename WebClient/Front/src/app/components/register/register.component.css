@@ -1,0 +1,15 @@
+.card {
+  border: none;
+  border-radius: 10px;
+}
+.card-title {
+  font-weight: 600;
+}
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}

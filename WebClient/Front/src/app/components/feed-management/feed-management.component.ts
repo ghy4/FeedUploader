@@ -1,19 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-interface Product {
-  id: string;
-  name: string;
-  sku: string;
-  category: string;
-  price: number;
-  oldPrice?: number;
-  stock: number;
-  status: 'active' | 'inactive' | 'pending';
-  image?: string;
-  selected?: boolean;
-}
+import { HttpClientModule } from '@angular/common/http';
+import { Product, ProductService } from '../../services/product';
+import { FeedService } from '../../services/feed.service';
 
 @Component({
   selector: 'app-feed-management',
@@ -22,50 +13,73 @@ interface Product {
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class FeedManagementComponent implements OnInit {
-  products: Product[] = [];
-  filteredProducts: Product[] = [];
-  paginatedProducts: Product[] = [];
-  
+  products: (Product & { selected?: boolean })[] = [];
+  filteredProducts: (Product & { selected?: boolean })[] = [];
+  paginatedProducts: (Product & { selected?: boolean })[] = [];
+
   selectedFile: File | null = null;
   isDragOver = false;
   isLoading = false;
   uploadProgress = 0;
-  
+
   // Search and filters
   searchTerm = '';
   selectedCategory = '';
   priceRange = '';
   categories: string[] = [];
-  
+
   // Sorting
   sortField = '';
   sortDirection: 'asc' | 'desc' = 'asc';
-  
+
   // Pagination
   currentPage = 1;
   pageSize = 20;
   totalPages = 1;
-  
+
   // Selection
   allSelected = false;
 
+  // Inline edit state
+  editingProductId: number | null = null;
+  editBuffer: (Product & { selected?: boolean }) | null = null;
+  savingEdit = false;
+  deletingIds = new Set<number>();
+
+  constructor(
+    private productService: ProductService,
+    private feedService: FeedService
+  ) {}
+
   ngOnInit(): void {
-    this.loadMockData();
+    this.loadProducts();
   }
 
-  loadMockData(): void {
-    // Initialize with empty products
-    this.products = [];
-    this.extractCategories();
-    this.filterProducts();
+  loadProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (products: any) => {
+        // Support possible $values wrapper if backend used Preserve previously
+        const list: any[] = Array.isArray(products) ? products : (products?.$values ?? []);
+        this.products = list.map(p => ({ ...p, selected: false }));
+        this.extractCategories();
+        this.filterProducts();
+      },
+      error: (err) => {
+        console.error('Error loading products', err);
+        this.products = [];
+        this.extractCategories();
+        this.filterProducts();
+      }
+    });
   }
 
   extractCategories(): void {
-    this.categories = [...new Set(this.products.map(p => p.category))];
+    this.categories = [...new Set(this.products.map(p => p.category))].filter(Boolean);
   }
 
   onDragOver(event: DragEvent): void {
@@ -118,22 +132,40 @@ export class FeedManagementComponent implements OnInit {
 
   processFile(): void {
     if (!this.selectedFile) return;
-
     this.isLoading = true;
-    
-    // Simulate file processing with progress
-    const interval = setInterval(() => {
-      this.uploadProgress += 10;
-      
-      if (this.uploadProgress >= 100) {
-        clearInterval(interval);
-        setTimeout(() => {
+    this.feedService.uploadFile(this.selectedFile).subscribe({
+      next: (result) => {
+        this.uploadProgress = result.progress;
+        if (result.products) {
+          // Normalize potential $values wrapper
+          const incomingRaw: any = result.products as any;
+          const incoming: any[] = Array.isArray(incomingRaw) ? incomingRaw : (incomingRaw?.$values ?? []);
+          if (!Array.isArray(incoming)) {
+            console.warn('Upload response products not an array', incomingRaw);
+            return;
+          }
+          const existingMap = new Map(this.products.map(p => [p.id, p]));
+          for (const prod of incoming) {
+            if (existingMap.has(prod.id)) {
+              Object.assign(existingMap.get(prod.id)!, prod, { selected: false });
+            } else {
+              existingMap.set(prod.id, { ...prod, selected: false });
+            }
+          }
+          this.products = Array.from(existingMap.values());
+          this.extractCategories();
+          this.filterProducts();
+        }
+        if (result.progress === 100) {
           this.isLoading = false;
-          // In real app, parse the actual file and populate products
-          // For now, keep products empty until real file is uploaded
-        }, 1000);
+        }
+      },
+      error: (err) => {
+        this.isLoading = false;
+        alert('Eroare la încărcarea fișierului!');
+        console.error('Upload error:', err);
       }
-    }, 200);
+    });
   }
 
   removeFile(): void {
@@ -165,7 +197,8 @@ export class FeedManagementComponent implements OnInit {
       // Search filter
       const matchesSearch = !this.searchTerm || 
         product.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        product.sku.toLowerCase().includes(this.searchTerm.toLowerCase());
+        (product.model?.toLowerCase().includes(this.searchTerm.toLowerCase()) ?? false) ||
+        (product.manufacturer?.toLowerCase().includes(this.searchTerm.toLowerCase()) ?? false);
 
       // Category filter
       const matchesCategory = !this.selectedCategory || 
@@ -211,6 +244,11 @@ export class FeedManagementComponent implements OnInit {
     this.filteredProducts.sort((a, b) => {
       let aValue = (a as any)[this.sortField];
       let bValue = (b as any)[this.sortField];
+
+  // Handle null / undefined gracefully
+  if (aValue == null && bValue == null) return 0;
+  if (aValue == null) return this.sortDirection === 'asc' ? 1 : -1;
+  if (bValue == null) return this.sortDirection === 'asc' ? -1 : 1;
 
       if (typeof aValue === 'string') {
         aValue = aValue.toLowerCase();
@@ -285,16 +323,68 @@ export class FeedManagementComponent implements OnInit {
     });
   }
 
-  editProduct(product: Product): void {
-    console.log('Edit product:', product);
-    // In real app, open edit modal
+  editProduct(product: Product & { selected?: boolean }): void {
+    // Backward compatibility method name - delegate to startEdit
+    this.startEdit(product);
   }
 
-  deleteProduct(productId: string): void {
-    if (confirm('Ești sigur că vrei să ștergi acest produs?')) {
-      this.products = this.products.filter(p => p.id !== productId);
-      this.filterProducts();
-    }
+  startEdit(product: Product & { selected?: boolean }): void {
+    if (this.savingEdit) return;
+    this.editingProductId = product.id;
+    // Shallow clone is enough (all primitives)
+    this.editBuffer = { ...product };
+  }
+
+  isEditing(product: Product): boolean {
+    return this.editingProductId === product.id;
+  }
+
+  cancelEdit(): void {
+    this.editingProductId = null;
+    this.editBuffer = null;
+    this.savingEdit = false;
+  }
+
+  saveEdit(): void {
+    if (!this.editBuffer || this.editingProductId == null) return;
+    this.savingEdit = true;
+    const payload: Product = { ...this.editBuffer } as Product; // ensure Product shape
+    this.productService.updateProduct(payload.id, payload).subscribe({
+      next: () => {
+        // Update local list manually (API returns no content)
+        const idx = this.products.findIndex(p => p.id === payload.id);
+        if (idx !== -1) {
+          const selected = this.products[idx].selected;
+          this.products[idx] = { ...payload, selected };
+        }
+        this.filterProducts();
+        this.cancelEdit();
+      },
+      error: (err) => {
+        console.error('Update error', err);
+        alert('Eroare la salvarea produsului.');
+        this.savingEdit = false;
+      }
+    });
+  }
+
+  deleteProduct(productId: number): void {
+    if (this.deletingIds.has(productId)) return;
+    if (!confirm('Ești sigur că vrei să ștergi acest produs?')) return;
+    this.deletingIds.add(productId);
+    this.productService.deleteProduct(productId).subscribe({
+      next: () => {
+        this.products = this.products.filter(p => p.id !== productId);
+        this.filterProducts();
+        if (this.editingProductId === productId) this.cancelEdit();
+        this.deletingIds.delete(productId);
+      },
+      error: (err) => {
+        console.error('Delete error:', err);
+        alert('Eroare la ștergerea produsului!');
+        this.deletingIds.delete(productId);
+      }
+    });
   }
 
   getStockClass(stock: number): string {
@@ -321,22 +411,53 @@ export class FeedManagementComponent implements OnInit {
     }
   }
 
-  trackByProductId(index: number, product: Product): string {
+  trackByProductId(index: number, product: Product): number {
     return product.id;
   }
 
   exportToExcel(): void {
-    const selectedProducts = this.products.filter(p => p.selected);
-    console.log('Export to Excel:', selectedProducts);
-    // In real app, generate Excel file
+    const selectedIds = this.products.filter(p => p.selected).map(p => p.id);
+    if (selectedIds.length === 0) {
+      alert('Selectează cel puțin un produs pentru export!');
+      return;
+    }
+    this.feedService.exportToExcel(selectedIds).subscribe({
+      next: (blob) => {
+        // Download the file
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'export.xlsx';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        alert('Eroare la export!');
+        console.error('Export error:', err);
+      }
+    });
   }
 
   clearData(): void {
     if (confirm('Ești sigur că vrei să ștergi toate produsele?')) {
-      this.products = [];
-      this.filteredProducts = [];
-      this.paginatedProducts = [];
-      this.selectedFile = null;
+      this.feedService.clearDatabase().subscribe({
+        next: (success) => {
+          if (success) {
+            this.products = [];
+            this.filteredProducts = [];
+            this.paginatedProducts = [];
+            this.selectedFile = null;
+            this.uploadProgress = 0;
+            this.allSelected = false;
+          } else {
+            alert('Eroare la ștergerea bazei de date!');
+          }
+        },
+        error: (err) => {
+          alert('Eroare la ștergerea bazei de date!');
+          console.error('Clear DB error:', err);
+        }
+      });
     }
   }
 

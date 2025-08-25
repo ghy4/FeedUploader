@@ -197,13 +197,12 @@
                        [class.bi-sort-numeric-up]="sortField === 'price' && sortDirection === 'desc'"
                        [class.bi-arrow-down-up]="sortField !== 'price'"></i>
                   </th>
-                  <th (click)="sortBy('stock')" style="cursor: pointer;">
+                  <th (click)="sortBy('quantity')" style="cursor: pointer;">
                     Stoc
-                    <i class="bi" [class.bi-sort-numeric-down]="sortField === 'stock' && sortDirection === 'asc'"
-                       [class.bi-sort-numeric-up]="sortField === 'stock' && sortDirection === 'desc'"
-                       [class.bi-arrow-down-up]="sortField !== 'stock'"></i>
+                    <i class="bi" [class.bi-sort-numeric-down]="sortField === 'quantity' && sortDirection === 'asc'"
+                       [class.bi-sort-numeric-up]="sortField === 'quantity' && sortDirection === 'desc'"
+                       [class.bi-arrow-down-up]="sortField !== 'quantity'"></i>
                   </th>
-                  <th>Status</th>
                   <th width="100">Acțiuni</th>
                 </tr>
               </thead>
@@ -216,34 +215,30 @@
                   </td>
                   <td>
                     <div class="d-flex align-items-center">
-                      <img *ngIf="product.image" 
-                           [src]="product.image" 
+                      <img *ngIf="product.mainImage" 
+                           [src]="product.mainImage" 
                            [alt]="product.name"
                            class="rounded me-2"
                            style="width: 40px; height: 40px; object-fit: cover;">
                       <div>
                         <div class="fw-semibold">{{ product.name }}</div>
-                        <small class="text-muted">SKU: {{ product.sku }}</small>
+                        <!-- SKU not available in Product model -->
                       </div>
                     </div>
                   </td>
                   <td>{{ product.category }}</td>
                   <td>
                     <span class="fw-semibold">{{ product.price | number:'1.2-2' }} RON</span>
-                    <div *ngIf="product.oldPrice" class="text-muted">
-                      <small class="text-decoration-line-through">{{ product.oldPrice | number:'1.2-2' }} RON</small>
+                    <div *ngIf="product.salePrice" class="text-muted">
+                      <small class="text-decoration-line-through">{{ product.salePrice | number:'1.2-2' }} RON</small>
                     </div>
                   </td>
                   <td>
-                    <span [class]="getStockClass(product.stock)">
-                      {{ product.stock }}
+                    <span [class]="getStockClass(product.quantity)">
+                      {{ product.quantity }}
                     </span>
                   </td>
-                  <td>
-                    <span [class]="getStatusClass(product.status)">
-                      {{ getStatusLabel(product.status) }}
-                    </span>
-                  </td>
+                  <!-- Status not available in Product model, column removed -->
                   <td>
                     <div class="d-flex gap-1">
                       <button class="btn btn-sm btn-outline-primary" 

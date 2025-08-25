@@ -1,28 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CategoryMappingService, CMCategory, CategoryMappingRecord } from '../../services/category-mapping.service';
 
-interface Category {
-  id: string;
-  name: string;
-  path?: string;
-  productCount?: number;
-  children?: Category[];
-  expanded?: boolean;
-  mapped?: boolean;
-  needsMapping?: boolean;
-  mappedFeedCategories?: string[];
-}
+type Category = CMCategory;
 
 interface Marketplace {
   id: string;
   name: string;
 }
 
-interface CategoryMapping {
+interface CategoryMapping { // UI level rich mapping
   id: string;
   feedCategory: Category;
   marketplaceCategory: Category;
+  marketplaceId: string;
   status: 'active' | 'pending' | 'disabled';
   attributeMappings?: Record<string, string>;
 }
@@ -94,22 +86,33 @@ export class CategoryMappingComponent implements OnInit {
   feedAttributes: ProductAttribute[] = [];
   marketplaceAttributes: ProductAttribute[] = [];
 
+  constructor(private mappingService: CategoryMappingService) {}
+
   ngOnInit(): void {
-    this.loadMockData();
+    // Load persisted mappings
+    const stored = this.mappingService.loadMappings();
+    this.mappings = stored.map(r => ({
+      id: r.id,
+      feedCategory: { id: r.feedCategoryId, name: r.feedCategoryId }, // placeholder, will reconcile after load
+      marketplaceCategory: { id: r.marketplaceCategoryId, name: r.marketplaceCategoryId },
+      marketplaceId: r.marketplaceId,
+      status: r.status,
+      attributeMappings: r.attributeMappings
+    }));
+    // Load feed categories from products
+    this.mappingService.getFeedCategories().subscribe(feed => {
+      this.feedCategories = feed;
+      this.reconcileFeedCategories();
+      this.filterFeedCategories();
+    });
   }
 
-  loadMockData(): void {
-    // Initialize with empty categories and mappings
-    this.feedCategories = [];
-    this.marketplaceCategories = [];
-    
-    this.filterFeedCategories();
-    this.filterMarketplaceCategories();
-    this.loadMockMappings();
-  }
-
-  loadMockMappings(): void {
-    this.mappings = [];
+  private reconcileFeedCategories(): void {
+    // Attach real category objects to existing mappings (feed side)
+    this.mappings.forEach(m => {
+      const real = this.feedCategories.find(c => c.id === m.feedCategory.id || c.name === m.feedCategory.name);
+      if (real) m.feedCategory = real;
+    });
   }
 
   onMarketplaceChange(): void {
@@ -120,8 +123,15 @@ export class CategoryMappingComponent implements OnInit {
   }
 
   loadMarketplaceCategories(marketplaceId: string): void {
-    // In real app, load from API based on marketplace
-    this.filterMarketplaceCategories();
+    this.mappingService.getMarketplaceCategories(marketplaceId).subscribe(cats => {
+      this.marketplaceCategories = cats;
+      // Reconcile marketplace side for existing mappings of this marketplace
+      this.mappings.filter(m => m.marketplaceId === marketplaceId).forEach(m => {
+        const found = this.findCategoryById(this.marketplaceCategories, m.marketplaceCategory.id);
+        if (found) m.marketplaceCategory = found;
+      });
+      this.filterMarketplaceCategories();
+    });
   }
 
   loadMarketplaceAttributes(marketplaceId: string): void {
@@ -273,6 +283,7 @@ export class CategoryMappingComponent implements OnInit {
       id: 'map-' + Date.now(),
       feedCategory: this.selectedFeedCategory,
       marketplaceCategory: this.selectedMarketplaceCategory,
+      marketplaceId: this.selectedMarketplace,
       status: 'active'
     };
 
@@ -336,9 +347,16 @@ export class CategoryMappingComponent implements OnInit {
   }
 
   saveMappings(): void {
-    // In real app, save to backend
-    console.log('Saving mappings:', this.mappings);
-    alert('Mapările au fost salvate cu succes!');
+    const records: CategoryMappingRecord[] = this.mappings.map(m => ({
+      id: m.id,
+      feedCategoryId: m.feedCategory.id,
+      marketplaceCategoryId: m.marketplaceCategory.id,
+      marketplaceId: m.marketplaceId,
+      status: m.status,
+      attributeMappings: m.attributeMappings
+    }));
+    this.mappingService.saveMappings(records);
+    alert('Mapările au fost salvate local.');
   }
 
   // AI Suggestions
@@ -377,6 +395,17 @@ export class CategoryMappingComponent implements OnInit {
       }
       if (category.children) {
         const found = this.findCategoryByName(category.children, name);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+
+  private findCategoryById(categories: Category[], id: string): Category | null {
+    for (const category of categories) {
+      if (category.id === id) return category;
+      if (category.children) {
+        const found = this.findCategoryById(category.children, id);
         if (found) return found;
       }
     }

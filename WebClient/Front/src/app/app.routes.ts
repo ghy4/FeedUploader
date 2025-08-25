@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FeedManagementComponent } from './components/feed-management/feed-management.component';
 import { CategoryMappingComponent } from './components/category-mapping/category-mapping.component';
 import { ProductExportComponent } from './components/product-export/product-export.component';
 import { ExportLogComponent } from './components/export-log/export-log.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
-import { LoginComponent } from './components/login/login.component'; // Adjust path as needed
-import { RegisterComponent } from './components/register/register.component'; // Adjust path as needed
-import { AuthGuard } from './auth.guard'; // Ensure this is created
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,8 +22,9 @@ export const routes: Routes = [
   { path: '**', redirectTo: '/login' } // Wildcard to redirect invalid paths to login
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+// Export the router provider configuration
+import { provideRouter } from '@angular/router';
+
+export const appRoutingProviders = [
+  provideRouter(routes)
+];

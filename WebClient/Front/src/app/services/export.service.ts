@@ -116,7 +116,7 @@ export class ExportService {
     products.forEach(product => {
       if (!product.category) {
         errors.push({
-          productId: product.id,
+          productId: product.id.toString(), // Convert number to string
           productName: product.name,
           error: 'Categoria lipsește',
           field: 'category'
@@ -125,30 +125,28 @@ export class ExportService {
       
       if (product.price <= 0) {
         errors.push({
-          productId: product.id,
+          productId: product.id.toString(), // Convert number to string
           productName: product.name,
           error: 'Prețul trebuie să fie mai mare decât 0',
           field: 'price'
         });
       }
-      
-      if (product.stock < 0) {
-        errors.push({
-          productId: product.id,
-          productName: product.name,
-          error: 'Stocul nu poate fi negativ',
-          field: 'stock'
-        });
-      }
+      // Removed stock check since it's not in the Product model
     });
     
     return of(errors).pipe(delay(1000));
   }
 
   downloadExport(jobId: string): Observable<Blob> {
-    // Simulate file download
-    const csvContent = 'Product ID,Name,SKU,Category,Brand,Price,Stock\n';
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    return of(blob).pipe(delay(500));
+    // Simulate file download with existing Product properties
+    const csvContent = 'Product ID,Name,Description,Model,Manufacturer,Category,Price,Sale Price,Currency,Quantity,Warranty,Main Image,Additional Image 1,Additional Image 2,Additional Image 3,Additional Image 4,Type\n';
+    const job = this.exportJobs.find(j => j.id === jobId);
+    if (job) {
+      // Simulate adding product data (replace with actual data if needed)
+      const sampleProduct = '1,Sample Product,Sample Description,Model X,Manufacturer X,Category X,100,90,RON,10,12,http://example.com/main.jpg,http://example.com/img1.jpg,http://example.com/img2.jpg,http://example.com/img3.jpg,http://example.com/img4.jpg,Type X';
+      const blob = new Blob([csvContent + sampleProduct], { type: 'text/csv' });
+      return of(blob).pipe(delay(500));
+    }
+    return of(new Blob()).pipe(delay(500));
   }
-} 
+}

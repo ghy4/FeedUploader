@@ -17,12 +17,22 @@
             {{ getErrorMessage('name') }}
           </mat-error>
         </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Model</mat-label>
+          <input matInput formControlName="model" placeholder="Introdu modelul produsului">
+          <mat-error *ngIf="productForm.get('model')?.hasError('required')">
+            {{ getErrorMessage('model') }}
+          </mat-error>
+        </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label>SKU</mat-label>
-          <input matInput formControlName="sku" placeholder="Introdu SKU-ul produsului">
-          <mat-error *ngIf="productForm.get('sku')?.hasError('required')">
-            {{ getErrorMessage('sku') }}
+          <mat-label>Producător</mat-label>
+          <input matInput formControlName="manufacturer" placeholder="Introdu producătorul">
+          <mat-error *ngIf="productForm.get('manufacturer')?.hasError('required')">
+            {{ getErrorMessage('manufacturer') }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -37,10 +47,10 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Brand</mat-label>
-          <input matInput formControlName="brand" placeholder="Introdu brandul produsului">
-          <mat-error *ngIf="productForm.get('brand')?.hasError('required')">
-            {{ getErrorMessage('brand') }}
+          <mat-label>Tip</mat-label>
+          <input matInput formControlName="type" placeholder="Introdu tipul produsului">
+          <mat-error *ngIf="productForm.get('type')?.hasError('required')">
+            {{ getErrorMessage('type') }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -58,14 +68,76 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Stoc</mat-label>
-          <input matInput type="number" formControlName="stock" placeholder="0">
-          <mat-error *ngIf="productForm.get('stock')?.hasError('required')">
-            {{ getErrorMessage('stock') }}
+          <mat-label>Preț de Vânzare (RON)</mat-label>
+          <input matInput type="number" formControlName="salePrice" placeholder="0.00">
+          <mat-error *ngIf="productForm.get('salePrice')?.hasError('min')">
+            {{ getErrorMessage('salePrice') }}
           </mat-error>
-          <mat-error *ngIf="productForm.get('stock')?.hasError('min')">
-            {{ getErrorMessage('stock') }}
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Monedă</mat-label>
+          <input matInput formControlName="currency" placeholder="Introdu moneda">
+          <mat-error *ngIf="productForm.get('currency')?.hasError('required')">
+            {{ getErrorMessage('currency') }}
           </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Cantitate</mat-label>
+          <input matInput type="number" formControlName="quantity" placeholder="0">
+          <mat-error *ngIf="productForm.get('quantity')?.hasError('required')">
+            {{ getErrorMessage('quantity') }}
+          </mat-error>
+          <mat-error *ngIf="productForm.get('quantity')?.hasError('min')">
+            {{ getErrorMessage('quantity') }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Garanție (luni)</mat-label>
+          <input matInput type="number" formControlName="warranty" placeholder="0">
+          <mat-error *ngIf="productForm.get('warranty')?.hasError('required')">
+            {{ getErrorMessage('warranty') }}
+          </mat-error>
+          <mat-error *ngIf="productForm.get('warranty')?.hasError('min')">
+            {{ getErrorMessage('warranty') }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Imagine Principală</mat-label>
+          <input matInput formControlName="mainImage" placeholder="URL imaginii principale">
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Imagine Adițională 1</mat-label>
+          <input matInput formControlName="additionalImage1" placeholder="URL imaginii adiționale 1">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Imagine Adițională 2</mat-label>
+          <input matInput formControlName="additionalImage2" placeholder="URL imaginii adiționale 2">
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Imagine Adițională 3</mat-label>
+          <input matInput formControlName="additionalImage3" placeholder="URL imaginii adiționale 3">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Imagine Adițională 4</mat-label>
+          <input matInput formControlName="additionalImage4" placeholder="URL imaginii adiționale 4">
         </mat-form-field>
       </div>
 
@@ -81,26 +153,6 @@
           {{ getErrorMessage('description') }}
         </mat-error>
       </mat-form-field>
-
-      <!-- Product Images Preview -->
-      <div class="images-section" *ngIf="product.images && product.images.length > 0">
-        <h4>Imagini Produs</h4>
-        <div class="images-grid">
-          <div class="image-item" *ngFor="let image of product.images">
-            <img [src]="image" [alt]="product.name" class="product-image">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Attributes -->
-      <div class="attributes-section" *ngIf="hasAttributes()">
-        <h4>Atribute Produs</h4>
-        <div class="attributes-grid">
-          <div class="attribute-item" *ngFor="let attr of getAttributeEntries()">
-            <strong>{{ attr.key }}:</strong> {{ attr.value }}
-          </div>
-        </div>
-      </div>
     </mat-dialog-content>
 
     <mat-dialog-actions align="end">
@@ -115,4 +167,4 @@
       </button>
     </mat-dialog-actions>
   </form>
-</div> 
+</div>

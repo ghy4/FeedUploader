@@ -1,0 +1,96 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Register</h2>
+          <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                [(ngModel)]="userData.name"
+                name="name"
+                required
+                minlength="2"
+                maxlength="20"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="surname" class="form-label">Surname</label>
+              <input
+                type="text"
+                id="surname"
+                class="form-control"
+                [(ngModel)]="userData.surname"
+                name="surname"
+                required
+                minlength="2"
+                maxlength="20"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                [(ngModel)]="userData.email"
+                name="email"
+                required
+                email
+                minlength="8"
+                maxlength="30"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                [(ngModel)]="userData.password"
+                name="password"
+                required
+                minlength="8"
+                maxlength="50"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="contactNumber" class="form-label">Contact Number</label>
+              <input
+                type="tel"
+                id="contactNumber"
+                class="form-control"
+                [(ngModel)]="userData.contactNumber"
+                name="contactNumber"
+                required
+                minlength="10"
+                maxlength="15"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <select
+                id="role"
+                class="form-control"
+                [(ngModel)]="userData.role"
+                name="role"
+                required
+              >
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">Register</button>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+              {{ errorMessage }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

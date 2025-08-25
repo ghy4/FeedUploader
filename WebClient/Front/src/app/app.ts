@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   standalone: true,
-  styleUrl: './app.css',
+  styleUrls: ['./app.css'],
   imports: [
     CommonModule,
     RouterOutlet,
@@ -14,6 +14,16 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     RouterLinkActive
   ]
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = 'Platformă Export Marketplace';
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    // ...existing code...
+  }
+
+  isAuthPage(): boolean {
+    const url = this.router.url;
+    return url === '/login' || url === '/register';
+  }
 }

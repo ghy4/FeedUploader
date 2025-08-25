@@ -35,7 +35,7 @@ export class ProductEditDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<ProductEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product
   ) {
-    this.product = { ...data };
+    this.product = { ...data }; // Create a copy of the input product
   }
 
   ngOnInit(): void {
@@ -44,13 +44,24 @@ export class ProductEditDialogComponent implements OnInit {
 
   initForm(): void {
     this.productForm = this.fb.group({
-      name: [this.product.name, [Validators.required, Validators.minLength(2)]],
-      sku: [this.product.sku, [Validators.required]],
-      category: [this.product.category, [Validators.required]],
-      brand: [this.product.brand, [Validators.required]],
-      price: [this.product.price, [Validators.required, Validators.min(0)]],
-      stock: [this.product.stock, [Validators.required, Validators.min(0)]],
-      description: [this.product.description, [Validators.required, Validators.minLength(10)]]
+      id: [this.product.id || 0], // Optional, read-only if needed
+      name: [this.product.name || '', [Validators.required, Validators.minLength(2)]],
+      description: [this.product.description || '', [Validators.required, Validators.minLength(10)]],
+      model: [this.product.model || '', [Validators.required]],
+      manufacturer: [this.product.manufacturer || '', [Validators.required]],
+      category: [this.product.category || '', [Validators.required]],
+      price: [this.product.price || 0, [Validators.required, Validators.min(0)]],
+      salePrice: [this.product.salePrice || 0, [Validators.min(0)]],
+      currency: [this.product.currency || '', [Validators.required]],
+      quantity: [this.product.quantity || 0, [Validators.required, Validators.min(0)]],
+      warranty: [this.product.warranty || 0, [Validators.required, Validators.min(0)]],
+      mainImage: [this.product.mainImage || ''],
+      additionalImage1: [this.product.additionalImage1 || ''],
+      additionalImage2: [this.product.additionalImage2 || ''],
+      additionalImage3: [this.product.additionalImage3 || ''],
+      additionalImage4: [this.product.additionalImage4 || ''],
+      type: [this.product.type || '', [Validators.required]]
+      // temps is optional, no need for default unless required
     });
   }
 
@@ -81,12 +92,4 @@ export class ProductEditDialogComponent implements OnInit {
     }
     return '';
   }
-
-  getAttributeEntries(): { key: string; value: string }[] {
-    return Object.entries(this.product.attributes).map(([key, value]) => ({ key, value }));
-  }
-
-  hasAttributes(): boolean {
-    return this.product.attributes && Object.keys(this.product.attributes).length > 0;
-  }
-} 
+}

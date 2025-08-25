@@ -13,14 +13,17 @@ export interface Product {
   salePrice: number;
   currency: string;
   quantity: number;
-  warranty: number;
+  warranty: number | null; // Backend now allows null
   mainImage: string;
-  additionalImage1: string;
-  additionalImage2: string;
-  additionalImage3: string;
-  additionalImage4: string;
+  additionalImage1?: string | null;
+  additionalImage2?: string | null;
+  additionalImage3?: string | null;
+  additionalImage4?: string | null;
   type: string;
-  temps?: { [key: string]: string };
+  // Optional collections coming from ProductDTO
+  attributes?: any[];
+  extractedAttributes?: { [key: string]: string } | null;
+  temps?: { [key: string]: string }; // Legacy / temporary field if still used somewhere
 }
 
 @Injectable({
