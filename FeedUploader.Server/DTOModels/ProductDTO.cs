@@ -46,7 +46,7 @@ namespace FeedUploader.Server.DTOModels
 		public int Quantity { get; set; }
 
 		[Range(0, 120)]
-		public int Warranty { get; set; }
+		public int? Warranty { get; set; } = null;
 
 		[Required]
 		[StringLength(4096)]
@@ -62,8 +62,6 @@ namespace FeedUploader.Server.DTOModels
 		[Required]
 		[Range(0, int.MaxValue)]
 		public int Id { get; set; }
-		[Range(0, 120)]
-		public int Warranty { get; set; }
 		[StringLength(4096)]
 		[Url]
 		public string? AdditionalImage1 { get; set; }

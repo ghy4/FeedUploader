@@ -99,6 +99,63 @@
     ]
   },
   {
+    "ContainingType": "FeedUploader.Server.Controllers.FeedController",
+    "Method": "ClearDatabase",
+    "RelativePath": "api/Feed/clear",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.FeedController",
+    "Method": "GenerateExcel",
+    "RelativePath": "api/Feed/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productIds",
+        "Type": "System.Collections.Generic.ICollection\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FeedUploader.Server.Controllers.FeedController",
+    "Method": "UploadFeed",
+    "RelativePath": "api/Feed/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[FeedUploader.Server.DTOModels.ProductDTO, FeedUploader.Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "FeedUploader.Server.Controllers.ProductController",
     "Method": "PostProduct",
     "RelativePath": "api/Product",

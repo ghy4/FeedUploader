@@ -179,9 +179,5 @@ namespace FeedUploader.Server.Controllers
 			public string ContactNumber { get; set; }
 			public string Role { get; set; }
 		}
-		public interface IJwtService
-		{
-			string GenerateToken(User user);
-		}
 	}
 }
