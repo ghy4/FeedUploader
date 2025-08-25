@@ -10,25 +10,22 @@ namespace FeedUploader.Data.Services
 		public DbSet<User> Users { get; set; }
 		public DbSet<Models.Attribute> Attributes { get; set; }
 		public DbSet<ProductAttribute> ProductAttributes { get; set; }
-		public MyDbContext(string connectionstring)
+		public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) 
 		{
-			_connectionstring = connectionstring;
-		}
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseMySQL(_connectionstring);
 		}
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Product>()
 				.HasOne(p => p.User)
 				.WithMany(u => u.Products)
-				.HasForeignKey(p => p.UserId);
+				.HasForeignKey(p => p.UserId)
+				.OnDelete(DeleteBehavior.Cascade);
 
 			modelBuilder.Entity<ProductAttribute>()
 				.HasOne(pa => pa.Product)
 				.WithMany(p => p.Attributes)
-				.HasForeignKey(pa => pa.ProductId);
+				.HasForeignKey(pa => pa.ProductId)
+				.OnDelete(DeleteBehavior.Restrict);
 
 			modelBuilder.Entity<ProductAttribute>()
 				.HasOne(pa => pa.Attribute)

@@ -16,7 +16,7 @@ namespace FeedUploader.Data.Models
 		public decimal SalePrice { get; set; } = 0.0m;
 		public string Currency { get; set; } = "LEI";
 		public int Quantity { get; set; } = 0;
-		public int Warranty { get; set; } = 0;
+		public int? Warranty { get; set; } = null;
 		public string MainImage { get; set; } = string.Empty;
 		public string AdditionalImage1 { get; set; } = string.Empty;
 		public string AdditionalImage2 { get; set; } = string.Empty;

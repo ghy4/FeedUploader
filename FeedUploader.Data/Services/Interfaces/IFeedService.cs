@@ -12,5 +12,6 @@ namespace FeedUploader.Data.Services.Interfaces
 	{
 		Task<ICollection<Product>> UploadFeedAsync(IFormFile file, int userId);
 		Task<byte[]> GenerateExcelAsync(ICollection<int> productIds);
+		Task<bool> ClearDatabaseAsync();
 	}
 }

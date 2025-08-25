@@ -5,6 +5,7 @@ using FeedUploader.Data.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using Microsoft.AspNetCore.Http;
+using EFCore.BulkExtensions;
 using OfficeOpenXml;
 
 namespace FeedUploader.Data.Services
@@ -18,6 +19,63 @@ namespace FeedUploader.Data.Services
 			_dbContext = dbContext;
 		}
 
+		//public async Task<ICollection<Product>> UploadFeedAsync(IFormFile file, int userId)
+		//{
+		//	if (file == null || file.Length == 0) throw new ArgumentException("No file uploaded");
+
+		//	var user = await _dbContext.Users.FindAsync(userId);
+		//	if (user == null) throw new ArgumentException("User not found");
+
+		//	using var reader = new StreamReader(file.OpenReadStream());
+		//	using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
+		//	csv.Context.RegisterClassMap<ProductCsvMap>();
+		//	var products = csv.GetRecords<Product>().ToList();
+
+		//	foreach (var product in products)
+		//	{
+		//		product.UserId = userId;
+		//		product.ExtractedAttributes = await ExtractAttributesAsync(product.Description);
+
+		//		if (product.ExtractedAttributes != null)
+		//		{
+		//			foreach (var attr in product.ExtractedAttributes)
+		//			{
+		//				var attribute = await _dbContext.Attributes.FirstOrDefaultAsync(a => a.Code == attr.Key);
+		//				if (attribute == null)
+		//				{
+		//					attribute = new Models.Attribute
+		//					{
+		//						Code = attr.Key,
+		//						Name = GetAttributeName(attr.Key),
+		//						IsRequired = IsRequiredAttribute(attr.Key),
+		//						IsRestricted = IsRestrictedAttribute(attr.Key),
+		//						Unit = GetAttributeUnit(attr.Key),
+		//						AllowedValues = GetAllowedValues(attr.Key)
+		//					};
+		//					await _dbContext.Attributes.AddAsync(attribute);
+		//					await _dbContext.SaveChangesAsync();
+		//				}
+
+		//				if (attribute.IsRestricted && attribute.AllowedValues != null && !attribute.AllowedValues.Contains(attr.Value))
+		//					continue;
+
+		//				product.Attributes.Add(new ProductAttribute
+		//				{
+		//					AttributeId = attribute.Id,
+		//					Value = attr.Value,
+		//					IsExtractedByAI = true
+		//				});
+		//			}
+		//		}
+
+		//		await _dbContext.Products.AddAsync(product);
+		//	}
+
+		//	return await _dbContext.SaveChangesAsync() >= 1 ? products : throw new Exception("Failed to save products");
+		//}
+
+
 		public async Task<ICollection<Product>> UploadFeedAsync(IFormFile file, int userId)
 		{
 			if (file == null || file.Length == 0) throw new ArgumentException("No file uploaded");
@@ -25,51 +83,129 @@ namespace FeedUploader.Data.Services
 			var user = await _dbContext.Users.FindAsync(userId);
 			if (user == null) throw new ArgumentException("User not found");
 
-			using var reader = new StreamReader(file.OpenReadStream());
-			using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-			var products = csv.GetRecords<Product>().ToList();
+			var currentBatch = new List<Product>();
+			var allProducts = new List<Product>();
+			const int batchSize = 500; 
 
-			foreach (var product in products)
+			try
 			{
-				product.UserId = userId;
-				product.ExtractedAttributes = await ExtractAttributesAsync(product.Description);
+				using var stream = file.OpenReadStream();
+				using var reader = new StreamReader(stream);
+				using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-				if (product.ExtractedAttributes != null)
+				csv.Context.RegisterClassMap<ProductCsvMap>();
+				await csv.ReadAsync();
+				csv.ReadHeader();
+
+				while (await csv.ReadAsync())
 				{
-					foreach (var attr in product.ExtractedAttributes)
+					var product = csv.GetRecord<Product>();
+					if (product == null) continue;
+
+					product.UserId = userId;
+					product.ExtractedAttributes = await ExtractAttributesAsync(product.Description);
+
+					if (product.ExtractedAttributes != null)
 					{
-						var attribute = await _dbContext.Attributes.FirstOrDefaultAsync(a => a.Code == attr.Key);
-						if (attribute == null)
-						{
-							attribute = new Models.Attribute
-							{
-								Code = attr.Key,
-								Name = GetAttributeName(attr.Key),
-								IsRequired = IsRequiredAttribute(attr.Key),
-								IsRestricted = IsRestrictedAttribute(attr.Key),
-								Unit = GetAttributeUnit(attr.Key),
-								AllowedValues = GetAllowedValues(attr.Key)
-							};
-							await _dbContext.Attributes.AddAsync(attribute);
-							await _dbContext.SaveChangesAsync();
-						}
+						await ProcessAttributesAsync(product);
+					}
 
-						if (attribute.IsRestricted && attribute.AllowedValues != null && !attribute.AllowedValues.Contains(attr.Value))
-							continue;
+					currentBatch.Add(product);
 
-						product.Attributes.Add(new ProductAttribute
-						{
-							AttributeId = attribute.Id,
-							Value = attr.Value,
-							IsExtractedByAI = true
-						});
+					if (currentBatch.Count >= batchSize)
+					{
+						await BulkInsertProductsAsync(currentBatch);
+						allProducts.AddRange(currentBatch);
+						currentBatch.Clear();
 					}
 				}
 
-				await _dbContext.Products.AddAsync(product);
-			}
+				if (currentBatch.Any())
+				{
+					await BulkInsertProductsAsync(currentBatch);
+					allProducts.AddRange(currentBatch);
+				}
 
-			return await _dbContext.SaveChangesAsync() >= 1 ? products : throw new Exception("Failed to save products");
+				return allProducts;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Failed to save products: " + ex.Message, ex);
+			}
+		}
+
+		private async Task BulkInsertProductsAsync(List<Product> products)
+		{
+			try
+			{
+				await _dbContext.BulkInsertAsync(products, new BulkConfig
+				{
+					PreserveInsertOrder = true,
+					SetOutputIdentity = true,
+					BulkCopyTimeout = 300
+				});
+				await _dbContext.SaveChangesAsync();
+			}
+			catch (DbUpdateException ex)
+			{
+				throw new Exception("Failed to save products: " + ex.Message, ex);
+			}
+		}
+
+		private async Task ProcessAttributesAsync(Product product)
+		{
+			foreach (var attr in product.ExtractedAttributes)
+			{
+				var attribute = await _dbContext.Attributes.FirstOrDefaultAsync(a => a.Code == attr.Key);
+				if (attribute == null)
+				{
+					attribute = new Models.Attribute
+					{
+						Code = attr.Key,
+						Name = GetAttributeName(attr.Key),
+						IsRequired = IsRequiredAttribute(attr.Key),
+						IsRestricted = IsRestrictedAttribute(attr.Key),
+						Unit = GetAttributeUnit(attr.Key),
+						AllowedValues = GetAllowedValues(attr.Key)
+					};
+					_dbContext.Attributes.Add(attribute);
+					await _dbContext.SaveChangesAsync();
+				}
+
+				if (!(attribute.IsRestricted && attribute.AllowedValues != null && !attribute.AllowedValues.Contains(attr.Value)))
+				{
+					product.Attributes.Add(new ProductAttribute
+					{
+						AttributeId = attribute.Id,
+						Value = attr.Value,
+						IsExtractedByAI = true
+					});
+				}
+			}
+		}
+
+		private sealed class ProductCsvMap : CsvHelper.Configuration.ClassMap<Product>
+		{
+			public ProductCsvMap()
+			{
+				Map(m => m.Id).Name("id");
+				Map(m => m.Name).Name("name");
+				Map(m => m.Description).Name("description");
+				Map(m => m.Model).Name("model");
+				Map(m => m.Manufacturer).Name("manufacturer");
+				Map(m => m.Category).Name("category");
+				Map(m => m.Price).Name("price");
+				Map(m => m.SalePrice).Name("sale_price");
+				Map(m => m.Currency).Name("currency");
+				Map(m => m.Quantity).Name("quantity");
+				Map(m => m.Warranty).Name("warranty");
+				Map(m => m.MainImage).Name("image");
+				Map(m => m.AdditionalImage1).Name("additional_image_1");
+				Map(m => m.AdditionalImage2).Name("additional_image_2");
+				Map(m => m.AdditionalImage3).Name("additional_image_3");
+				Map(m => m.AdditionalImage4).Name("additional_image_4");
+				Map(m => m.Type).Name("type");
+			}
 		}
 
 		public async Task<byte[]> GenerateExcelAsync(ICollection<int> productIds)
@@ -109,12 +245,20 @@ namespace FeedUploader.Data.Services
 
 		public async Task<bool> ClearDatabaseAsync()
 		{
-			await _dbContext.Database.ExecuteSqlRawAsync("SET FOREIGN_KEY_CHECKS = 0");
-			await _dbContext.Database.ExecuteSqlRawAsync("TRUNCATE TABLE ProductAttributes");
-			await _dbContext.Database.ExecuteSqlRawAsync("TRUNCATE TABLE Products");
-			await _dbContext.Database.ExecuteSqlRawAsync("TRUNCATE TABLE Attributes");
-			await _dbContext.Database.ExecuteSqlRawAsync("TRUNCATE TABLE Users");
-			await _dbContext.Database.ExecuteSqlRawAsync("SET FOREIGN_KEY_CHECKS = 1");
+			var conn = _dbContext.Database.GetDbConnection(); 
+			await conn.OpenAsync();
+			var sql = @"
+					SET FOREIGN_KEY_CHECKS=0;
+					TRUNCATE TABLE `productattributes`;
+					TRUNCATE TABLE `attributes`;
+					TRUNCATE TABLE `products`;  
+					SET FOREIGN_KEY_CHECKS=1;";
+
+			await using var cmd = conn.CreateCommand();
+			cmd.CommandText = sql;
+			await cmd.ExecuteNonQueryAsync();
+
+			_dbContext.ChangeTracker.Clear();
 			return true;
 		}
 
@@ -122,12 +266,12 @@ namespace FeedUploader.Data.Services
 		{
 			// Placeholder for AI service (e.g., Azure NLP)
 			return await Task.FromResult(new Dictionary<string, string>
-	{
-		{ "[5704]", "Disc" },
-		{ "[8541]", "Metal" },
-		{ "[8624]", "Polizor unghiular" },
-		{ "[5401]", "Multicolor" }
-	});
+			{
+				{ "[5704]", "Disc" },
+				{ "[8541]", "Metal" },
+				{ "[8624]", "Polizor unghiular" },
+				{ "[5401]", "Multicolor" }
+			});
 		}
 
 		private string GetAttributeName(string code) => code switch
