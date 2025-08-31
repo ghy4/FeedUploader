@@ -8,6 +8,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './auth.guard';
+import { AdminGuard } from './admin.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,7 +18,7 @@ export const routes: Routes = [
   { path: 'category-mapping', component: CategoryMappingComponent, canActivate: [AuthGuard] },
   { path: 'product-export', component: ProductExportComponent, canActivate: [AuthGuard] },
   { path: 'export-log', component: ExportLogComponent, canActivate: [AuthGuard] },
-  { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AuthGuard] },
+  { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default to login for unauthenticated users
   { path: '**', redirectTo: '/login' } // Wildcard to redirect invalid paths to login
 ];

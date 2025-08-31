@@ -8,10 +8,6 @@
           <p class="text-muted mb-0">Gestionează utilizatori, configurări și monitorizează sistemul</p>
         </div>
         <div>
-          <button class="btn btn-outline-secondary btn-modern me-2" (click)="backupSystem()">
-            <i class="bi bi-download me-2"></i>
-            Backup Sistem
-          </button>
           <button class="btn btn-primary-modern btn-modern" (click)="openAddUserModal()">
             <i class="bi bi-person-plus me-2"></i>
             Adaugă Utilizator
@@ -135,9 +131,8 @@
                 </div>
                 <select class="form-select" [(ngModel)]="roleFilter" (change)="filterUsers()">
                   <option value="">Toate rolurile</option>
-                  <option value="admin">Administrator</option>
-                  <option value="manager">Manager</option>
-                  <option value="user">Utilizator</option>
+                  <option value="Admin">Admin</option>
+                  <option value="User">Utilizator</option>
                 </select>
               </div>
             </div>
@@ -160,10 +155,10 @@
                       <div class="d-flex align-items-center">
                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3"
                              style="width: 40px; height: 40px;">
-                          {{ getUserInitials(user.name) }}
+                          {{ getUserInitials(fullName(user)) }}
                         </div>
                         <div>
-                          <div class="fw-semibold">{{ user.name }}</div>
+                          <div class="fw-semibold">{{ fullName(user) }}</div>
                           <small class="text-muted">ID: {{ user.id }}</small>
                         </div>
                       </div>
@@ -475,7 +470,7 @@
   </div>
 
   <!-- User Modal -->
-  <div class="modal fade" id="userModal" tabindex="-1" *ngIf="showUserModal">
+  <div class="modal fade" id="userModal" tabindex="-1" *ngIf="showUserModal" [class.show]="showUserModal" [ngStyle]="{'display':'block'}">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -488,27 +483,39 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label class="form-label">Nume complet:</label>
-              <input type="text" class="form-control" [(ngModel)]="userForm.name" name="name">
+              <label class="form-label">Prenume:</label>
+              <input type="text" class="form-control" [(ngModel)]="userForm.name" name="name" placeholder="Prenume">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nume:</label>
+              <input type="text" class="form-control" [(ngModel)]="userForm.surname" name="surname" placeholder="Nume de familie">
             </div>
             
             <div class="mb-3">
               <label class="form-label">Email:</label>
               <input type="email" class="form-control" [(ngModel)]="userForm.email" name="email">
             </div>
+
+            <div class="mb-3">
+              <label class="form-label">Telefon (optional):</label>
+              <input type="text" class="form-control" [(ngModel)]="userForm.contactNumber" name="contactNumber">
+            </div>
             
             <div class="mb-3">
               <label class="form-label">Rol:</label>
               <select class="form-select" [(ngModel)]="userForm.role" name="role">
                 <option value="user">Utilizator</option>
-                <option value="manager">Manager</option>
-                <option value="admin">Administrator</option>
+                <option value="admin">Admin</option>
               </select>
             </div>
             
             <div class="mb-3" *ngIf="!editingUser">
               <label class="form-label">Parolă:</label>
               <input type="password" class="form-control" [(ngModel)]="userForm.password" name="password">
+            </div>
+            <div class="mb-3" *ngIf="editingUser">
+              <label class="form-label">Parolă (lasă liber pentru a păstra):</label>
+              <input type="password" class="form-control" [(ngModel)]="userForm.password" name="passwordEdit">
             </div>
             
             <div class="mb-3">
@@ -520,16 +527,23 @@
               </div>
             </div>
           </form>
+          <div *ngIf="formErrors.length" class="alert alert-danger py-2">
+            <ul class="m-0 ps-3 small">
+              <li *ngFor="let err of formErrors">{{ err }}</li>
+            </ul>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="closeUserModal()">
             Anulează
           </button>
-          <button type="button" class="btn btn-primary" (click)="saveUser()">
-            {{ editingUser ? 'Actualizează' : 'Creează' }} Utilizator
+          <button type="button" class="btn btn-primary" (click)="saveUser()" [disabled]="savingUser">
+            <span *ngIf="!savingUser">{{ editingUser ? 'Actualizează' : 'Creează' }} Utilizator</span>
+            <span *ngIf="savingUser"><i class="bi bi-clock-history me-1"></i>Se salvează...</span>
           </button>
         </div>
       </div>
     </div>
   </div>
+  <div *ngIf="showUserModal" class="modal-backdrop fade show"></div>
 </div> 

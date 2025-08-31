@@ -90,4 +90,19 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
+
+  getUserRole(): string | null {
+    return this.getCurrentUser()?.role || null;
+  }
+
+  isAdmin(): boolean {
+    return this.getUserRole() === 'Admin' || this.getUserRole() === 'admin';
+  }
+
+  hasRole(required: string | string[]): boolean {
+    const role = this.getUserRole();
+    if (!role) return false;
+    if (Array.isArray(required)) return required.some(r => r.toLowerCase() === role.toLowerCase());
+    return role.toLowerCase() === required.toLowerCase();
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ProductService, Product } from '../../services/product';
+import { ActivityService, ActivityEntry } from '../../services/activity.service';
 
 interface DashboardStats {
   totalProducts: number;
@@ -46,11 +48,23 @@ export class DashboardComponent implements OnInit {
   };
 
   recentActivities: Activity[] = [];
-
   scheduledExports: ScheduledExport[] = [];
+  loading = false;
+
+  constructor(private products: ProductService, private activity: ActivityService) {}
 
   ngOnInit(): void {
-    // Component initialization
+    this.refreshData();
+    // Subscribe to live activity updates
+    this.activity.activities$.subscribe(list => {
+      this.recentActivities = list.map(a => ({
+        type: a.type,
+        description: a.description,
+        status: a.status,
+        date: a.date
+      }));
+      this.recomputeExportStatsFromActivities();
+    });
   }
 
   getTimeAgo(date: Date | null): string {
@@ -98,7 +112,27 @@ export class DashboardComponent implements OnInit {
   }
 
   refreshData(): void {
-    // Refresh dashboard data
-    console.log('Refreshing dashboard data...');
+    if (this.loading) return;
+    this.loading = true;
+    this.products.getProducts().subscribe({
+      next: (data: any) => {
+        const list: Product[] = Array.isArray(data) ? data : (data?.$values ?? []);
+        this.stats.totalProducts = list.length;
+        this.loading = false;
+      },
+      error: _ => { this.loading = false; }
+    });
+    // Activities already subscribed; export stats update inside subscription
+  }
+
+  private recomputeExportStatsFromActivities(): void {
+    const exportActs = this.recentActivities.filter(a => a.type === 'export');
+    const success = exportActs.filter(a => a.status === 'success').length;
+    const failed = exportActs.filter(a => a.status === 'error').length;
+    const total = success + failed;
+    this.stats.successfulExports = success;
+    this.stats.failedExports = failed;
+    this.stats.successRate = total ? Math.round((success / total) * 100) : 0;
+    this.stats.lastExport = exportActs.length ? exportActs[0].date : null;
   }
 } 

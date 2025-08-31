@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UserService, AppUser } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
-interface User {
-  id: string;
+interface UserVM {
+  id: number;
   name: string;
+  surname: string;
   email: string;
-  role: 'admin' | 'manager' | 'user';
-  status: 'active' | 'inactive' | 'suspended';
-  lastActivity: Date;
+  role: string;
+  status: string;
+  lastActivity?: Date;
 }
 
 interface Marketplace {
@@ -65,10 +68,12 @@ interface HistoryEntry {
 }
 
 interface UserForm {
-  name: string;
+  name: string;        
+  surname: string;     
   email: string;
   role: string;
   password: string;
+  contactNumber: string;
   active: boolean;
 }
 
@@ -85,7 +90,6 @@ interface UserForm {
 export class AdminPanelComponent implements OnInit {
   activeTab = 'users';
   
-  // System Stats
   systemStats: SystemStats = {
     totalUsers: 0,
     activeTokens: 0,
@@ -93,22 +97,24 @@ export class AdminPanelComponent implements OnInit {
     storageUsed: 0
   };
 
-  // Users Management
-  users: User[] = [];
-  filteredUsers: User[] = [];
+  users: UserVM[] = [];
+  filteredUsers: UserVM[] = [];
   userSearchTerm = '';
   roleFilter = '';
   showUserModal = false;
-  editingUser: User | null = null;
+  editingUser: UserVM | null = null;
   userForm: UserForm = {
     name: '',
+    surname: '',
     email: '',
     role: 'user',
     password: '',
+    contactNumber: '',
     active: true
   };
+  formErrors: string[] = [];
+  savingUser = false;
 
-  // API & Tokens
   marketplaces: Marketplace[] = [
     {
       id: 'emag',
@@ -169,19 +175,36 @@ export class AdminPanelComponent implements OnInit {
   historyDateFrom = '';
   historyDateTo = '';
 
+  constructor(private userService: UserService, private auth: AuthService) {}
+
   ngOnInit(): void {
-    this.loadMockData();
+    // Safety: ensure only admin; route guard should handle already
+    if (!this.auth.isAdmin()) return;
+    this.loadUsers();
     this.loadHistory();
   }
 
-  loadMockData(): void {
-    this.users = [];
-    this.filteredUsers = [...this.users];
+  loadUsers(): void {
+    this.userService.getUsers().subscribe(list => {
+      this.users = list.map(u => ({
+        id: u.id,
+  name: u.name,
+  surname: u.surname,
+        email: u.email,
+        role: u.role,
+        status: u.status || 'active',
+        lastActivity: u.lastActivity ? new Date(u.lastActivity) : undefined
+      }));
+      this.filteredUsers = [...this.users];
+      this.filterUsers();
+  this.updateSystemStats();
+    });
   }
 
   loadHistory(): void {
     this.history = [];
     this.filteredHistory = [...this.history];
+  this.updateSystemStats();
   }
 
   // Tab Management
@@ -193,7 +216,8 @@ export class AdminPanelComponent implements OnInit {
   filterUsers(): void {
     this.filteredUsers = this.users.filter(user => {
       const matchesSearch = !this.userSearchTerm || 
-        user.name.toLowerCase().includes(this.userSearchTerm.toLowerCase()) ||
+  user.name.toLowerCase().includes(this.userSearchTerm.toLowerCase()) ||
+  user.surname.toLowerCase().includes(this.userSearchTerm.toLowerCase()) ||
         user.email.toLowerCase().includes(this.userSearchTerm.toLowerCase());
 
       const matchesRole = !this.roleFilter || user.role === this.roleFilter;
@@ -206,24 +230,30 @@ export class AdminPanelComponent implements OnInit {
     this.editingUser = null;
     this.userForm = {
       name: '',
+      surname: '',
       email: '',
       role: 'user',
       password: '',
+      contactNumber: '',
       active: true
     };
     this.showUserModal = true;
+    this.formErrors = [];
   }
 
-  editUser(user: User): void {
+  editUser(user: UserVM): void {
     this.editingUser = user;
     this.userForm = {
       name: user.name,
+      surname: user.surname,
       email: user.email,
       role: user.role,
       password: '',
+      contactNumber: '',
       active: user.status === 'active'
     };
     this.showUserModal = true;
+    this.formErrors = [];
   }
 
   closeUserModal(): void {
@@ -232,45 +262,96 @@ export class AdminPanelComponent implements OnInit {
   }
 
   saveUser(): void {
-    if (this.editingUser) {
-      // Update existing user
-      this.editingUser.name = this.userForm.name;
-      this.editingUser.email = this.userForm.email;
-      this.editingUser.role = this.userForm.role as any;
-      this.editingUser.status = this.userForm.active ? 'active' : 'inactive';
-    } else {
-      // Add new user
-      const newUser: User = {
-        id: Date.now().toString(),
-        name: this.userForm.name,
-        email: this.userForm.email,
-        role: this.userForm.role as any,
-        status: this.userForm.active ? 'active' : 'inactive',
-        lastActivity: new Date()
-      };
-      this.users.push(newUser);
-    }
+    this.formErrors = this.validateUserForm();
+    if (this.formErrors.length) return;
+    if (this.savingUser) return;
+    this.savingUser = true;
 
-    this.filterUsers();
-    this.closeUserModal();
-    alert('Utilizatorul a fost salvat cu succes!');
+    if (!this.editingUser) {
+      // Create user
+      const { name, surname, email, password, contactNumber, role } = this.prepareUserPayload();
+      this.userService.createUser({ name, surname, email, password, contactNumber, role }).subscribe(created => {
+        this.savingUser = false;
+        if (!created) {
+          this.formErrors = ['Eroare la crearea utilizatorului.'];
+          return;
+        }
+        // Optimistically push; backend returns created user DTO (Id etc.)
+        this.users.push({
+          id: (created as any).id || created.id,
+            name: created.name,
+            surname: created.surname,
+            email: created.email,
+            role: created.role,
+            status: this.userForm.active ? 'active' : 'inactive',
+            lastActivity: new Date()
+        });
+        this.filterUsers();
+  this.updateSystemStats();
+        this.closeUserModal();
+      }, _ => {
+        this.savingUser = false;
+        this.formErrors = ['Eroare la rețea la crearea utilizatorului.'];
+      });
+    } else {
+      // Update local only (no backend endpoint yet)
+      this.editingUser.name = this.userForm.name;
+  this.editingUser.surname = this.userForm.surname;
+      this.editingUser.email = this.userForm.email;
+      this.editingUser.role = this.userForm.role;
+      this.editingUser.status = this.userForm.active ? 'active' : 'inactive';
+      this.filterUsers();
+      this.closeUserModal();
+      this.savingUser = false;
+  this.updateSystemStats();
+    }
   }
 
-  toggleUserStatus(user: User): void {
+  private validateUserForm(): string[] {
+    const errors: string[] = [];
+    if (!this.userForm.name.trim()) errors.push('Numele este obligatoriu');
+    if (!this.userForm.email.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(this.userForm.email)) errors.push('Email invalid');
+    if (!this.editingUser && !this.userForm.password.trim()) errors.push('Parola este obligatorie pentru creare');
+    if (this.userForm.password && this.userForm.password.length < 6) errors.push('Parola trebuie să aibă minim 6 caractere');
+    return errors;
+  }
+
+  private prepareUserPayload() {
+    // Split full name into name + surname if surname field left blank
+    let first = this.userForm.name.trim();
+    let sur = this.userForm.surname.trim();
+    if (!sur && first.includes(' ')) {
+      const parts = first.split(' ');
+      first = parts.shift() || first;
+      sur = parts.join(' ');
+    }
+    return {
+      name: first,
+      surname: sur,
+      email: this.userForm.email.trim(),
+      password: this.userForm.password,
+      contactNumber: this.userForm.contactNumber || '',
+      role: this.userForm.role
+    };
+  }
+
+  toggleUserStatus(user: UserVM): void {
     user.status = user.status === 'active' ? 'inactive' : 'active';
     alert(`Statusul utilizatorului ${user.name} a fost schimbat la ${user.status}.`);
+  this.updateSystemStats();
   }
 
-  deleteUser(user: User): void {
-    if (user.role === 'admin') {
+  deleteUser(user: UserVM): void {
+    if (user.role.toLowerCase() === 'admin') {
       alert('Nu poți șterge un administrator!');
       return;
     }
-
-    if (confirm(`Ești sigur că vrei să ștergi utilizatorul ${user.name}?`)) {
+    if (!confirm(`Ești sigur că vrei să ștergi utilizatorul ${user.name}?`)) return;
+    this.userService.deleteUser(user.id).subscribe(() => {
       this.users = this.users.filter(u => u.id !== user.id);
       this.filterUsers();
-    }
+  this.updateSystemStats();
+    });
   }
 
   // API & Token Management
@@ -298,6 +379,7 @@ export class AdminPanelComponent implements OnInit {
     if (confirm(`Ești sigur că vrei să revoci token-ul ${token.name}?`)) {
       this.activeTokens = this.activeTokens.filter(t => t.id !== token.id);
       alert('Token-ul a fost revocat cu succes!');
+  this.updateSystemStats();
     }
   }
 
@@ -345,23 +427,34 @@ export class AdminPanelComponent implements OnInit {
 
   // Utility Methods
   getUserInitials(name: string): string {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+  }
+
+  fullName(u: UserVM): string {
+    return `${u.name} ${u.surname}`.trim();
+  }
+
+  private updateSystemStats(): void {
+    const activeUsers = this.users.filter(u => u.status === 'active').length;
+    // totalUsers field is used in the card labelled "Utilizatori Activi" so store active count there
+    this.systemStats.totalUsers = activeUsers;
+    this.systemStats.activeTokens = this.activeTokens.length;
+    this.systemStats.totalExports = this.history.filter(h => h.action === 'export').length;
+    // storageUsed could later be computed; keep existing if already set
   }
 
   getRoleBadgeClass(role: string): string {
     switch (role) {
-      case 'admin': return 'bg-danger';
-      case 'manager': return 'bg-warning';
-      case 'user': return 'bg-primary';
+      case 'Admin': return 'bg-danger';
+      case 'User': return 'bg-primary';
       default: return 'bg-secondary';
     }
   }
 
   getRoleLabel(role: string): string {
     switch (role) {
-      case 'admin': return 'Administrator';
-      case 'manager': return 'Manager';
-      case 'user': return 'Utilizator';
+      case 'Admin': return 'Admin';
+      case 'User': return 'Utilizator';
       default: return role;
     }
   }

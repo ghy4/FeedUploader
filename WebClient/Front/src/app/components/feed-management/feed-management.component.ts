@@ -2,9 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { Product, ProductService } from '../../services/product';
 import { FeedService } from '../../services/feed.service';
+import { ActivityService } from '../../services/activity.service';
 
 @Component({
   selector: 'app-feed-management',
@@ -14,7 +14,6 @@ import { FeedService } from '../../services/feed.service';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule
   ]
 })
 export class FeedManagementComponent implements OnInit {
@@ -53,7 +52,8 @@ export class FeedManagementComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private feedService: FeedService
+    private feedService: FeedService,
+    private activity: ActivityService
   ) {}
 
   ngOnInit(): void {
@@ -155,6 +155,7 @@ export class FeedManagementComponent implements OnInit {
           this.products = Array.from(existingMap.values());
           this.extractCategories();
           this.filterProducts();
+          this.activity.add({ type: 'upload', description: `Upload feed (${incoming.length} produse)`, status: 'success', date: new Date() });
         }
         if (result.progress === 100) {
           this.isLoading = false;
@@ -164,6 +165,7 @@ export class FeedManagementComponent implements OnInit {
         this.isLoading = false;
         alert('Eroare la încărcarea fișierului!');
         console.error('Upload error:', err);
+        this.activity.add({ type: 'upload', description: 'Upload feed eșuat', status: 'error', date: new Date() });
       }
     });
   }
@@ -449,6 +451,7 @@ export class FeedManagementComponent implements OnInit {
             this.selectedFile = null;
             this.uploadProgress = 0;
             this.allSelected = false;
+            this.activity.add({ type: 'upload', description: 'Ștergere bazei de produse', status: 'warning', date: new Date() });
           } else {
             alert('Eroare la ștergerea bazei de date!');
           }
@@ -456,6 +459,7 @@ export class FeedManagementComponent implements OnInit {
         error: (err) => {
           alert('Eroare la ștergerea bazei de date!');
           console.error('Clear DB error:', err);
+          this.activity.add({ type: 'upload', description: 'Eroare la ștergerea bazei de date', status: 'error', date: new Date() });
         }
       });
     }

@@ -228,14 +228,14 @@
                   </td>
                   <td>
                     <div class="d-flex align-items-center">
-                      <img *ngIf="product.image" 
-                           [src]="product.image" 
+               <img *ngIf="product.mainImage" 
+                  [src]="product.mainImage" 
                            [alt]="product.name"
                            class="rounded me-2"
                            style="width: 40px; height: 40px; object-fit: cover;">
                       <div>
                         <div class="fw-semibold">{{ product.name }}</div>
-                        <small class="text-muted">SKU: {{ product.sku }}</small>
+                <small class="text-muted">Model: {{ product.model }}</small>
                       </div>
                     </div>
                   </td>
@@ -249,8 +249,8 @@
                     <span class="fw-semibold">{{ product.price | number:'1.2-2' }} RON</span>
                   </td>
                   <td>
-                    <span [class]="getStockClass(product.stock)">
-                      {{ product.stock }}
+                    <span [class]="getStockClass(product.quantity)">
+                      {{ product.quantity }}
                     </span>
                   </td>
                   <td>
@@ -328,7 +328,7 @@
   </div>
 
   <!-- Export Progress Modal -->
-  <div class="modal fade" id="exportModal" tabindex="-1" *ngIf="showExportModal">
+  <div class="modal fade" id="exportModal" tabindex="-1" *ngIf="showExportModal" [class.show]="showExportModal" [ngStyle]="{'display':'block'}">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -417,7 +417,7 @@
   </div>
 
   <!-- Product Preview Modal -->
-  <div class="modal fade" id="previewModal" tabindex="-1" *ngIf="showPreviewModal && previewProduct">
+  <div class="modal fade" id="previewModal" tabindex="-1" *ngIf="showPreviewModal && previewProduct" [class.show]="showPreviewModal" [ngStyle]="{'display':'block'}">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -435,11 +435,11 @@
                 <table class="table table-sm">
                   <tbody>
                     <tr><td><strong>Nume:</strong></td><td>{{ previewProduct.name }}</td></tr>
-                    <tr><td><strong>SKU:</strong></td><td>{{ previewProduct.sku }}</td></tr>
+                    <tr><td><strong>Model:</strong></td><td>{{ previewProduct.model }}</td></tr>
                     <tr><td><strong>Categorie:</strong></td><td>{{ previewProduct.category }}</td></tr>
                     <tr><td><strong>Preț:</strong></td><td>{{ previewProduct.price | number:'1.2-2' }} RON</td></tr>
-                    <tr><td><strong>Stoc:</strong></td><td>{{ previewProduct.stock }}</td></tr>
-                    <tr><td><strong>Brand:</strong></td><td>{{ previewProduct.brand || 'N/A' }}</td></tr>
+                    <tr><td><strong>Stoc:</strong></td><td>{{ previewProduct.quantity }}</td></tr>
+                    <tr><td><strong>Producător:</strong></td><td>{{ previewProduct.manufacturer || 'N/A' }}</td></tr>
                     <tr><td><strong>Descriere:</strong></td><td>{{ previewProduct.description || 'N/A' }}</td></tr>
                   </tbody>
                 </table>
@@ -452,11 +452,11 @@
                 <table class="table table-sm">
                   <tbody>
                     <tr><td><strong>Title:</strong></td><td>{{ previewProduct.name }}</td></tr>
-                    <tr><td><strong>Product Code:</strong></td><td>{{ previewProduct.sku }}</td></tr>
+                    <tr><td><strong>Product Code:</strong></td><td>{{ previewProduct.model }}</td></tr>
                     <tr><td><strong>Category:</strong></td><td>{{ previewProduct.mappedCategory || 'Unmapped' }}</td></tr>
                     <tr><td><strong>Price:</strong></td><td>{{ previewProduct.price | number:'1.2-2' }} RON</td></tr>
-                    <tr><td><strong>Stock:</strong></td><td>{{ previewProduct.stock }}</td></tr>
-                    <tr><td><strong>Brand:</strong></td><td>{{ previewProduct.brand || 'Unknown' }}</td></tr>
+                    <tr><td><strong>Stock:</strong></td><td>{{ previewProduct.quantity }}</td></tr>
+                    <tr><td><strong>Brand:</strong></td><td>{{ previewProduct.manufacturer || 'Unknown' }}</td></tr>
                     <tr><td><strong>Description:</strong></td><td>{{ previewProduct.description || 'No description' }}</td></tr>
                   </tbody>
                 </table>
@@ -506,3 +506,5 @@
     </div>
   </div>
 </div> 
+<div *ngIf="showExportModal" class="modal-backdrop fade show"></div>
+<div *ngIf="showPreviewModal && previewProduct" class="modal-backdrop fade show"></div>

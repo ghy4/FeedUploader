@@ -71,19 +71,6 @@
                 maxlength="15"
               />
             </div>
-            <div class="mb-3">
-              <label for="role" class="form-label">Role</label>
-              <select
-                id="role"
-                class="form-control"
-                [(ngModel)]="userData.role"
-                name="role"
-                required
-              >
-                <option value="User">User</option>
-                <option value="Admin">Admin</option>
-              </select>
-            </div>
             <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">Register</button>
             <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
               {{ errorMessage }}

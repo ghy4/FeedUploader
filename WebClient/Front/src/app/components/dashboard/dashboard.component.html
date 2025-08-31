@@ -8,9 +8,9 @@
           <p class="text-muted mb-0">Privire generală asupra activității platformei</p>
         </div>
         <div>
-          <button class="btn btn-primary-modern btn-modern">
+          <button class="btn btn-primary-modern btn-modern" (click)="refreshData()" [disabled]="loading">
             <i class="bi bi-arrow-clockwise me-2"></i>
-            Actualizează
+            {{ loading ? 'Se actualizează...' : 'Actualizează' }}
           </button>
         </div>
       </div>
@@ -26,10 +26,8 @@
           <h3 class="dashboard-card-value text-primary">{{ stats.totalProducts }}</h3>
           <p class="dashboard-card-label">Total Produse</p>
         </div>
-        <div class="d-flex align-items-center">
-          <small class="text-muted">
-            <i class="bi bi-info-circle"></i> Începe prin a încărca primul feed
-          </small>
+        <div class="d-flex align-items-center" *ngIf="stats.totalProducts === 0">
+          <small class="text-muted"><i class="bi bi-info-circle"></i> Începe prin a încărca primul feed</small>
         </div>
       </div>
     </div>
@@ -41,10 +39,8 @@
           <h3 class="dashboard-card-value text-success">{{ stats.successfulExports }}</h3>
           <p class="dashboard-card-label">Exporturi Reușite</p>
         </div>
-        <div class="d-flex align-items-center">
-          <small class="text-muted">
-            <i class="bi bi-info-circle"></i> Niciun export efectuat încă
-          </small>
+        <div class="d-flex align-items-center" *ngIf="stats.successfulExports === 0">
+          <small class="text-muted"><i class="bi bi-info-circle"></i> Niciun export efectuat încă</small>
         </div>
       </div>
     </div>
@@ -56,10 +52,8 @@
           <h3 class="dashboard-card-value text-warning">{{ stats.failedExports }}</h3>
           <p class="dashboard-card-label">Exporturi Eșuate</p>
         </div>
-        <div class="d-flex align-items-center">
-          <small class="text-muted">
-            <i class="bi bi-shield-check"></i> Sistem gata de utilizare
-          </small>
+        <div class="d-flex align-items-center" *ngIf="stats.failedExports === 0">
+          <small class="text-muted"><i class="bi bi-shield-check"></i> Sistem gata de utilizare</small>
         </div>
       </div>
     </div>

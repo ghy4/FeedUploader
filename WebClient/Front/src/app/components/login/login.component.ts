@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService, User, LoginRequest } from '../../services/auth.service'; // Adjust path
+import { AuthService, User, LoginRequest } from '../../services/auth.service'; 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule] // Import required modules
+  imports: [CommonModule, FormsModule] 
 })
 export class LoginComponent {
   credentials: LoginRequest = { email: '', password: '' };
@@ -22,7 +21,7 @@ export class LoginComponent {
     this.authService.login(this.credentials).subscribe({
       next: (response) => {
         console.log('Login successful', response.user);
-        this.router.navigate(['/dashboard']); // Redirect to dashboard
+        this.router.navigate(['/dashboard']); 
       },
       error: (err) => {
         this.errorMessage = err.message || 'Login failed';
