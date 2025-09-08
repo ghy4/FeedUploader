@@ -1,101 +1,70 @@
-﻿using System;
+﻿using AIParser.DataUtils;
+using FeedUploader.Data.Models;
+using FeedUploader.Data.Services;
+using FeedUploader.Data.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using FeedUploader.Data.Models;
-using System.Globalization;
 
 namespace AIParser
 {
 
 
-    internal class FeedExtractor
+    public class FeedExtractor
     {
-        public static Product ExtractProduct(List<string> keys, List<string> values)
+
+        private readonly AIService _aiService;
+        private readonly UserService userService;
+        private readonly ProductService productService;
+        private readonly FeedBatchScheduler _batchScheduler;
+        private readonly AttributeService attributeService;
+        public FeedExtractor(AIService aiService, UserService userService, ProductService productService, AttributeService attributeService)
         {
-            if (IsContaktFeed(keys))
+            _aiService = aiService;
+            _batchScheduler = new FeedBatchScheduler(2000); 
+            this.userService = userService;
+            this.productService = productService;
+            this.attributeService = attributeService;
+        }
+
+        public async Task<List<Product>> ProcessRawFeedAsync(RawFeedData rawData, int userId)
+        {
+         /*   var user = await userService.GetById(userId);
+            if (user == null) throw new ArgumentException("User not found");
+
+            var products = new List<Product>();
+
+            foreach (var batch in _batchScheduler.SplitIntoBatches(rawData))
             {
-                return ContaktStrategy(values);
+                try
+                {
+                    // AI получает сразу headers + batch строк
+                    var productJsonArray = await _aiService.NormalizeProductsBatchAsync(rawData.Headers, batch);
+
+                    
+                   
+                    products.AddRange(batchProducts);
+                }
+                catch (Exception ex)
+                {
+                    // если весь батч не удался → можно fallback по одной строке
+                    Console.WriteLine($"Batch processing failed: {ex.Message}");
+                    continue;
+                }
             }
-            else if (IsInterlinkFeed(keys))
+
+            if (products.Any())
             {
-                return InterlinkStrategy(values);
+                await _dbContext.Products.AddRangeAsync(products);
+                await _dbContext.SaveChangesAsync();
             }
-            else
-            {
-                throw new NotSupportedException("Format de feed necunoscut.");
-            }
-        }
-
-        private static bool IsContaktFeed(List<string> keys)
-        {
-            return keys.Contains("Cod produs") && keys.Contains("Brand") && keys.Contains("Denumire produs");
-        }
-
-        private static bool IsInterlinkFeed(List<string> keys)
-        {
-            return keys.Contains("id") && keys.Contains("name") && keys.Contains("description");
-        }
-
-        private static Product ContaktStrategy(List<string> values)
-        {
-            return new Product
-            {
-                Model = values[0],
-                Manufacturer = values[1],
-                Name = values[2],
-                MainImage = values[3],
-                Description = values[4],
-                Category = $"{values[5]} > {values[6]}",
-                AdditionalImage1 = values[7],
-                Temps = new Dictionary<string, string> { { "Specificatii", values[8] } },
-                Quantity = ParseInt(values[9]),
-                Price = ParseDecimal(values[11]),
-                Currency = "LEI",
-                Type = "new"
-            };
-        }
-
-        private static Product InterlinkStrategy(List<string> values)
-        {
-            return new Product
-            {
-                Model = values[3],
-                Name = values[1],
-                Description = values[2],
-                Manufacturer = values[4],
-                Category = values[5],
-                Price = ParseDecimal(values[6]),
-                SalePrice = ParseDecimal(values[7]),
-                Currency = values[8],
-                Quantity = ParseInt(values[9]),
-                Warranty = ParseInt(values[10]),
-                MainImage = values[11],
-                AdditionalImage1 = SafeGet(values, 12),
-                AdditionalImage2 = SafeGet(values, 13),
-                AdditionalImage3 = SafeGet(values, 14),
-                AdditionalImage4 = SafeGet(values, 15),
-                Type = SafeGet(values, 16) ?? "new"
-            };
-        }
-
-
-        private static string SafeGet(List<string> values, int index)
-        {
-            return index < values.Count ? values[index] : string.Empty;
-        }
-
-        private static decimal ParseDecimal(string input)
-        {
-            decimal.TryParse(input.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out var result);
-            return result;
-        }
-
-        private static int ParseInt(string input)
-        {
-            int.TryParse(input, out var result);
-            return result;
+         */   var products = new List<Product>();
+            return products;
         }
     }
 }

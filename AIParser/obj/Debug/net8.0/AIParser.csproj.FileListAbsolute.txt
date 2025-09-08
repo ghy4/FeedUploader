@@ -11,3 +11,6 @@ D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.dll
 D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\refint\AIParser.dll
 D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.pdb
 D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\ref\AIParser.dll
+D:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\FeedUploader.Data.dll
+D:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\FeedUploader.Data.pdb
+D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.csproj.Up2Date

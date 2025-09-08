@@ -9,12 +9,18 @@ namespace AIParser
     public class AIService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey =  "kerty";
+        private readonly string _apiKey = "sk-proj--";//api key removed for security reasons
 
-        public AIService(IConfiguration configuration)
+        /* public AIService(IConfiguration configuration)
+         {
+             //_apiKey = configuration["OpenAI:ApiKey"] ?? throw new Exception("OpenAI API key not found in configuration.");
+
+             _httpClient = new HttpClient();
+             _httpClient.BaseAddress = new Uri("https://api.openai.com/v1/");
+             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
+         }*/
+        public AIService()
         {
-            //_apiKey = configuration["OpenAI:ApiKey"] ?? throw new Exception("OpenAI API key not found in configuration.");
-
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://api.openai.com/v1/");
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
@@ -29,7 +35,7 @@ namespace AIParser
                 {
                     new { role = "user", content = aiRequest.Prompt }
                 },
-                temperature = 0.7,
+                temperature = 0.2,
                 max_tokens = aiRequest.MaxTokens
             };
 
