@@ -119,11 +119,6 @@ Answer: 4,5
             return result;
         }
 
-        /// <summary>
-        /// Формирует путь категории как строку, используя индексы (1-based) и список заголовков:
-        /// индексы [4,5] -> headers[3] + " > " + headers[4]
-        /// Если индекс вне диапазона — проигнорируем.
-        /// </summary>
         public static string FormatIndicesAsPath(IEnumerable<int> indices, IList<string> headers)
         {
             if (indices == null) return string.Empty;

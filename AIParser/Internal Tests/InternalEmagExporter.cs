@@ -11,6 +11,8 @@ public static class InternalEmagExporter
         Dictionary<string, string> mapari,
         Dictionary<string, string> valoriImplicite)
     {
+    // Example mapari usage:
+    // {"part_number","PartNumber"}, {"vendor_ext_id","Id"}, {"name","Name"}, ...
         using var wb = new XLWorkbook(pathTemplate);
         var ws = wb.Worksheet("Template");
 

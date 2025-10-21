@@ -30,7 +30,6 @@ namespace AIParser.PromptUtils
             IEnumerable<string> externalCategories,
             IEnumerable<PromptCategoryConfig> internalConfigs)
         {
-            // Формируем списки; каждый элемент в кавычках, без лишних ведущих запятых
             var externalList = string.Join("\n", externalCategories.Select(c => $"\"{c}\""));
             var internalList = string.Join("\n", internalConfigs.Select(c => $"\"{c.InternalCategory}\""));
 

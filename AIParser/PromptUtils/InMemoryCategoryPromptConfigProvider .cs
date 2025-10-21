@@ -25,49 +25,42 @@ namespace AIParser.PromptUtils
                 Name = "Material",
                 Code = "6372",
                 IsRequired = true,
-             //   IsRestrictive = true,
                 Unit = null
             },
             new Attribute {
                 Name = "Brand compatibil",
                 Code = "8927",
                 IsRequired = true,
-             //   IsRestrictive = true,
                 Unit = null
             },
             new Attribute {
                 Name = "Model compatibil",
                 Code = "8928",
                 IsRequired = true,
-              //  IsRestrictive = true,
                 Unit = null
             },
             new Attribute {
                 Name = "Tip",
                 Code = "8930",
                 IsRequired = true,
-               // IsRestrictive = true,
                 Unit = null
             },
             new Attribute {
                 Name = "Culoare",
                 Code = "5401",
                 IsRequired = false,
-               // IsRestrictive = true,
                 Unit = null
             },
             new Attribute {
                 Name = "Functii",
                 Code = "7235",
                 IsRequired = false,
-              //  IsRestrictive = true,
                 Unit = null
             },
             new Attribute {
                 Name = "Continut pachet",
                 Code = "6556",
                 IsRequired = false,
-              //  IsRestrictive = false,
                 Unit = null
             },
                 }

@@ -266,6 +266,7 @@ export class CategoryMappingComponent implements OnInit {
       return;
     }
 
+    // Check if mapping already exists
     const existingMapping = this.mappings.find(m => 
       m.feedCategory.id === this.selectedFeedCategory!.id
     );
@@ -288,6 +289,7 @@ export class CategoryMappingComponent implements OnInit {
 
     this.mappings.push(newMapping);
     
+    // Update category statuses
     this.selectedFeedCategory.mapped = true;
     this.selectedFeedCategory.needsMapping = false;
     

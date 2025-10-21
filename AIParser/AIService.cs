@@ -11,7 +11,7 @@ namespace AIParser
         private readonly HttpClient _httpClient;
         private readonly string _apiKey = "sk-proj--";//api key removed for security reasons
 
-        /* public AIService(IConfiguration configuration)
+        /* public AIService(IConfiguration configuration) // unul din constructori trebuie sa fie activ, daca este config pune aista , sau acel de jos daca nui
          {
              //_apiKey = configuration["OpenAI:ApiKey"] ?? throw new Exception("OpenAI API key not found in configuration.");
 
@@ -19,8 +19,9 @@ namespace AIParser
              _httpClient.BaseAddress = new Uri("https://api.openai.com/v1/");
              _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
          }*/
-        public AIService()
+        public AIService(string apiKey)
         {
+            _apiKey = apiKey ?? throw new Exception("OpenAI API key not found in configuration.");
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://api.openai.com/v1/");
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);

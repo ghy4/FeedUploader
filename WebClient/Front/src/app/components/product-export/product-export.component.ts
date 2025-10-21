@@ -6,6 +6,7 @@ import { ProductService, Product } from '../../services/product';
 import { FeedService } from '../../services/feed.service';
 import { AuthService } from '../../services/auth.service';
 import { ActivityService } from '../../services/activity.service';
+import { ExportHistoryService, ExportJob as PersistJob } from '../../services/export-history.service';
 
 type ExportStatus = 'ready' | 'validation_errors' | 'missing_mapping' | 'processing';
 
@@ -62,14 +63,15 @@ export class ProductExportComponent implements OnInit {
     private productService: ProductService,
     private authService: AuthService,
     private feedService: FeedService,
-    private activity: ActivityService
+    private activity: ActivityService,
+    private exportHistory: ExportHistoryService
   ) {}
   ngOnInit(): void { this.loadProducts(); }
   loadProducts(): void {
     this.isLoading = true;
     this.productService.getProducts().subscribe({
       next: (data: any) => {
-        const list: Product[] = Array.isArray(data) ? data : (data?.$values ?? []);
+  const list: Product[] = Array.isArray(data) ? data : (data?.$values ?? []);
         this.products = list.map(p => ({ ...p, selected: false, isMapped: !!p.category, exportStatus: p.category ? 'ready' : 'missing_mapping', validationErrors: [] }));
         this.extractCategories();
         this.filterProducts();
@@ -206,13 +208,28 @@ export class ProductExportComponent implements OnInit {
     this.exportLog = [];
     this.exportedFileBlob = null;
     const ids = valid.map(p => p.id);
+    // Create an export job in history
+    const jobId = Date.now().toString();
+    const jobName = `Export ${this.getMarketplaceName(this.selectedMarketplace)} - ${new Date().toLocaleString()}`;
+    this.exportHistory.add({
+      id: jobId,
+      name: jobName,
+      marketplace: this.getMarketplaceName(this.selectedMarketplace),
+      startTime: new Date(),
+      status: 'processing',
+      progress: this.exportProgress,
+      totalProducts: valid.length,
+      successfulProducts: 0,
+      failedProducts: 0,
+      logEntries: []
+    });
   // Start a pulse timer to show progress while awaiting backend
   this.startProgressPulse();
-    this.processExport(ids, valid);
+    this.processExport(ids, valid, jobId);
   }
 
   // Performs real export via FeedController using FeedService
-  processExport(productIds: number[], products: ExportProduct[]): void {
+  processExport(productIds: number[], products: ExportProduct[], jobId: string): void {
     this.exportCurrentItem = `Se exportă ${productIds.length} produse...`;
     // Only Excel supported currently by backend endpoint; ignore exportFormat mapping for now
     this.feedService.exportToExcel(productIds).subscribe({
@@ -223,9 +240,11 @@ export class ProductExportComponent implements OnInit {
           products.forEach(p => {
             this.exportStats.success++;
             this.exportLog.push({ product: p.name, message: 'Exportat cu succes', type: 'success', timestamp: new Date() });
+            this.exportHistory.appendLog(jobId, { productName: p.name, message: 'Exportat cu succes', type: 'success', timestamp: new Date() } as any);
           });
           this.exportProgress = 100;
           this.exportLog.push({ product: 'Sumar', message: `Export finalizat: ${this.exportStats.success} produse.`, type: 'success', timestamp: new Date() });
+          this.exportHistory.update(jobId, { endTime: new Date(), status: 'completed', progress: 100, successfulProducts: this.exportStats.success, failedProducts: this.exportStats.errors });
           this.activity.add({ type: 'export', description: `Export ${this.selectedMarketplace} (${this.exportStats.success} produse)`, status: 'success', date: new Date() });
           if (this.autoDownloadOnSuccess) {
             // defer to ensure modal renders progress 100 first
@@ -235,6 +254,7 @@ export class ProductExportComponent implements OnInit {
           this.exportStats.errors = productIds.length;
           this.exportProgress = 100;
           this.exportLog.push({ product: 'Eroare', message: 'Fișier gol sau invalid primit.', type: 'error', timestamp: new Date() });
+          this.exportHistory.update(jobId, { endTime: new Date(), status: 'failed', progress: 100, successfulProducts: 0, failedProducts: productIds.length });
           this.activity.add({ type: 'export', description: `Export eșuat (${productIds.length} produse)`, status: 'error', date: new Date() });
         }
         this.isExporting = false;
@@ -246,6 +266,7 @@ export class ProductExportComponent implements OnInit {
         this.exportStats.errors = productIds.length;
         this.exportProgress = 100;
         this.exportLog.push({ product: 'Eroare', message: 'Export eșuat: ' + (err?.message || 'necunoscut'), type: 'error', timestamp: new Date() });
+        this.exportHistory.update(jobId, { endTime: new Date(), status: 'failed', progress: 100, successfulProducts: 0, failedProducts: productIds.length });
         this.activity.add({ type: 'export', description: `Export eșuat (${productIds.length} produse)`, status: 'error', date: new Date() });
         this.isExporting = false;
         this.exportCurrentItem = '';

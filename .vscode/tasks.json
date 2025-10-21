@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build solution",
+			"type": "shell",
+			"command": "dotnet clean \"d:\\Practica\\Ex\\FeedUploader.sln\"; dotnet build \"d:\\Practica\\Ex\\FeedUploader.sln\" -c Debug",
+			"isBackground": false,
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build"
+		}
+	]
+}

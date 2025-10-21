@@ -9062,11 +9062,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Practica\\Ex\\Ex\\AIParser\\AIParser.csproj",
+      "projectUniqueName": "D:\\Practica\\Update\\Ex\\AIParser\\AIParser.csproj",
       "projectName": "AIParser",
-      "projectPath": "D:\\Practica\\Ex\\Ex\\AIParser\\AIParser.csproj",
+      "projectPath": "D:\\Practica\\Update\\Ex\\AIParser\\AIParser.csproj",
       "packagesPath": "C:\\Users\\gbruz\\.nuget\\packages\\",
-      "outputPath": "D:\\Practica\\Ex\\Ex\\AIParser\\obj\\",
+      "outputPath": "D:\\Practica\\Update\\Ex\\AIParser\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -9088,8 +9088,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Practica\\Ex\\Ex\\FeedUploader.Data\\FeedUploader.Data.csproj": {
-              "projectPath": "D:\\Practica\\Ex\\Ex\\FeedUploader.Data\\FeedUploader.Data.csproj"
+            "D:\\Practica\\Update\\Ex\\FeedUploader.Data\\FeedUploader.Data.csproj": {
+              "projectPath": "D:\\Practica\\Update\\Ex\\FeedUploader.Data\\FeedUploader.Data.csproj"
             }
           }
         }

@@ -8,6 +8,9 @@ namespace FeedUploader.Server.DTOModels
 	}
 	public class CreateProductDTO
 	{
+		[StringLength(100)]
+		public string? PartNumber { get; set; }
+
 		[Required]
 		[StringLength(30, MinimumLength = 2)]
 		public string Name { get; set; } = string.Empty;

@@ -28,32 +28,27 @@ namespace AIParser.Internal_Tests
 
         public InternalFeedExtractor(
             AIService aiService,
-            ICategoryPromptConfigProvider configProvider,
-            CategoryMapper categoryMapper,
-            FeedBatchScheduler? scheduler = null)
+            ICategoryPromptConfigProvider configProvider)
         {
             _ai = aiService;
             _configProvider = configProvider;
-            _categoryMapper = categoryMapper;
-            _scheduler = scheduler ?? new FeedBatchScheduler(2000);
+            _categoryMapper = new CategoryMapper(_ai);
+            _scheduler = new FeedBatchScheduler(2000);
         }
 
-        /// <summary>
-        /// Process raw feed for a given externalCategory (Romanian). 
-        /// availableAttributes - список атрибутов, которые допустимы для выбранной внутренней категории.
-        /// </summary>
         public async Task<InternalFeedExtractionResult> ProcessRawFeedAsync(
             RawFeedData raw,
-            List<Attribute> availableAttributes)
+             User user)
         {
+            var availableAttributes = _configProvider.GetAllAsync().Result.SelectMany(c => c.Attributes).ToList();
             var result = new InternalFeedExtractionResult();
             var configs = await _configProvider.GetAllAsync();
             string externalCategory;
             var externalCategories = await CategoryFieldDetector.GetAllExternalCategories(raw, _ai);
             externalCategory = externalCategories[0];
             var maps = await _categoryMapper.MapCategories(externalCategories, configs);
-            string internalCategory = maps[externalCategory];
-            // 2) Получаем конфиг для этой внутренней категории (если есть)
+            string internalCategory = maps[externalCategory];// later, it will be a list, now just 1to1
+            // aici trebu pus la sciotcic goiu, da pe urma 
             var config = configs.FirstOrDefault(c => string.Equals(c.InternalCategory, internalCategory, StringComparison.OrdinalIgnoreCase));
             if (config == null)
             {
@@ -70,9 +65,6 @@ namespace AIParser.Internal_Tests
                 // Required and other attributes names (by Name)
                 var reqAttrs = config.Attributes.Where(a => a.IsRequired).Select(a => a.Name).ToList();
                 var otherAttrs = config.Attributes.Where(a => !a.IsRequired).Select(a => a.Name).ToList();
-
-                // Build prompt (используем предложенный строгий промпт)
-                //var prompt = BuildProductExtractionPrompt(rowsText, externalCategory, reqAttrs, otherAttrs);
                 var prompt = config.PromptTemplate
                     .Replace("{rowsText}", rowsText)
                     .Replace("{internalCategory}", internalCategory)
@@ -111,7 +103,6 @@ namespace AIParser.Internal_Tests
                     continue;
                 }
 
-                // For each element in array -> use ProductDeserializer overload
                 foreach (var elem in root.EnumerateArray())
                 {
                     var desRes = ProductDeserializer.DeserializeFromJsonElement(elem, config.Attributes);
@@ -129,6 +120,12 @@ namespace AIParser.Internal_Tests
                     }
                 }
             }
+            foreach(var p in result.Products)
+            {
+                p.User = user;
+                p.UserId = user.Id;
+            }
+
 
             return result;
         }
@@ -152,52 +149,6 @@ namespace AIParser.Internal_Tests
             return sb.ToString().Trim();
         }
 
-        private string BuildProductExtractionPrompt(string rowsText, string externalCategory, List<string> requiredAttributes, List<string> otherAttributes)
-        {
-            // Используем рекомендованный строгий промпт (обновлённый)
-            var req = requiredAttributes.Any() ? string.Join(", ", requiredAttributes) : "none";
-            var other = otherAttributes.Any() ? string.Join(", ", otherAttributes) : "none";
 
-            return $@"
-You have the following feed line(s) in Romanian: 
-{rowsText}
-
-Feed category (original): ""{externalCategory}""
-
-Task:
-Return a VALID JSON array of objects, each object must match the Product model described below.
-Do NOT return any explanatory text — only JSON.
-
-Product fields:
-{{
-  ""RowIndex"": integer,
-  ""Name"": string,
-  ""Description"": string,
-  ""Model"": string,
-  ""Manufacturer"": string,
-  ""Category"": string,
-  ""Price"": number,
-  ""SalePrice"": number,
-  ""Currency"": string,
-  ""Quantity"": integer,
-  ""Warranty"": integer|null,
-  ""MainImage"": string,
-  ""AdditionalImage1"": string,
-  ""AdditionalImage2"": string,
-  ""AdditionalImage3"": string,
-  ""AdditionalImage4"": string,
-  ""Type"": string,
-  ""Attributes"": [ {{ ""Name"": ""Color"", ""Value"": ""Red"" }} ],
-  ""MatchStatus"": ""ok"" | ""error"",
-  ""ErrorReason"": string|null
-}}
-
-Constraints:
-- Required attributes for each product: {req}
-- Other attributes (optional): {other}
-- If a product cannot match required attributes, set ""MatchStatus"":""error"" and provide ""ErrorReason"".
-- Use numbers for Price/SalePrice and integers for Quantity/Warranty (or null).
-";
-        }
     }
-    }
+}

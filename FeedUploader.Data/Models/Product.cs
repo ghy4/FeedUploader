@@ -10,11 +10,12 @@ namespace FeedUploader.Data.Models
 		public string Name { get; set; } = string.Empty;
 		public string Description { get; set; } = string.Empty;
 		public string Model { get; set; } = string.Empty;
+		public string PartNumber { get; set; } = string.Empty;
 		public string Manufacturer { get; set; } = string.Empty;
 		public string Category { get; set; } = string.Empty;
 		public decimal Price { get; set; } = 0.0m;
 		public decimal SalePrice { get; set; } = 0.0m;
-		public string Currency { get; set; } = "RON";
+		public string Currency { get; set; } = "LEI";
 		public int Quantity { get; set; } = 0;
 		public int? Warranty { get; set; } = null;
 		public string MainImage { get; set; } = string.Empty;

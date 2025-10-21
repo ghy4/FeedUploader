@@ -14,3 +14,35 @@ D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\ref\AIParser.dl
 D:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\FeedUploader.Data.dll
 D:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\FeedUploader.Data.pdb
 D:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.csproj.Up2Date
+F:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\AIParser.deps.json
+F:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\AIParser.dll
+F:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\AIParser.pdb
+F:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\FeedUploader.Data.dll
+F:\Visual Studio repo\git\FeedUploader\AIParser\bin\Debug\net8.0\FeedUploader.Data.pdb
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.csproj.AssemblyReference.cache
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.GeneratedMSBuildEditorConfig.editorconfig
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.AssemblyInfoInputs.cache
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.AssemblyInfo.cs
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.csproj.CoreCompileInputs.cache
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.sourcelink.json
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.csproj.Up2Date
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.dll
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\refint\AIParser.dll
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\AIParser.pdb
+F:\Visual Studio repo\git\FeedUploader\AIParser\obj\Debug\net8.0\ref\AIParser.dll
+d:\Practica\Ex\AIParser\bin\Debug\net8.0\AIParser.deps.json
+d:\Practica\Ex\AIParser\bin\Debug\net8.0\AIParser.dll
+d:\Practica\Ex\AIParser\bin\Debug\net8.0\AIParser.pdb
+d:\Practica\Ex\AIParser\bin\Debug\net8.0\FeedUploader.Data.dll
+d:\Practica\Ex\AIParser\bin\Debug\net8.0\FeedUploader.Data.pdb
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.csproj.AssemblyReference.cache
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.GeneratedMSBuildEditorConfig.editorconfig
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.AssemblyInfoInputs.cache
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.AssemblyInfo.cs
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.csproj.CoreCompileInputs.cache
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.sourcelink.json
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.csproj.Up2Date
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.dll
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\refint\AIParser.dll
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\AIParser.pdb
+d:\Practica\Ex\AIParser\obj\Debug\net8.0\ref\AIParser.dll

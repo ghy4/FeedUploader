@@ -3,6 +3,34 @@
   max-width: 800px;
 }
 
+/* Ensure the page content fills the available viewport height and scrolls nicely */
+.container-fluid {
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.modern-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body-modern {
+  flex: 1;
+  overflow: auto;
+}
+
+/* Keep tables within viewport and wrap long content */
+.table-responsive { width: 100%; overflow-x: auto; }
+.table-modern { width: 100%; table-layout: fixed; }
+.table-modern th, .table-modern td { word-break: break-word; white-space: normal; }
+
+/* Prevent long log lines from stretching layout */
+pre { white-space: pre-wrap; word-break: break-word; }
+
 .job-summary {
   margin-bottom: 24px;
 }

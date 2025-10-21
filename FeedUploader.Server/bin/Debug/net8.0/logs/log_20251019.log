@@ -1,0 +1,123 @@
+2025-10-19T20:54:09.3775602Z	Information	Microsoft.Hosting.Lifetime	14	Now listening on: http://localhost:5122
+2025-10-19T20:54:09.3821545Z	Information	Microsoft.Hosting.Lifetime	0	Application started. Press Ctrl+C to shut down.
+2025-10-19T20:54:09.3829436Z	Information	Microsoft.Hosting.Lifetime	0	Hosting environment: Development
+2025-10-19T20:54:09.3834086Z	Information	Microsoft.Hosting.Lifetime	0	Content root path: D:\Practica\Ex\FeedUploader.Server
+2025-10-19T20:54:29.0184625Z	Information	RequestLogger	0	GET /
+2025-10-19T20:55:34.8000588Z	Information	Microsoft.Hosting.Lifetime	0	Application is shutting down...
+2025-10-19T20:56:16.0854863Z	Information	Microsoft.Hosting.Lifetime	14	Now listening on: https://localhost:7281
+2025-10-19T20:56:16.0895583Z	Information	Microsoft.Hosting.Lifetime	14	Now listening on: http://localhost:5122
+2025-10-19T20:56:16.2235067Z	Information	Microsoft.Hosting.Lifetime	0	Application started. Press Ctrl+C to shut down.
+2025-10-19T20:56:16.2352461Z	Information	Microsoft.Hosting.Lifetime	0	Hosting environment: Development
+2025-10-19T20:56:16.2397953Z	Information	Microsoft.Hosting.Lifetime	0	Content root path: D:\Practica\Ex\FeedUploader.Server
+2025-10-19T20:56:34.0716824Z	Information	RequestLogger	0	POST /api/User/login
+2025-10-19T20:56:36.1714499Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (52ms) [Parameters=[@__email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`ContactNumber`, `u`.`Email`, `u`.`Name`, `u`.`Password`, `u`.`Role`, `u`.`Surname`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__email_0
+LIMIT 1
+2025-10-19T20:56:37.7908923Z	Information	RequestLogger	0	GET /api/Product/Products
+2025-10-19T20:56:37.9676280Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:56:39.5887294Z	Information	RequestLogger	0	GET /api/Product/Products
+2025-10-19T20:56:39.6714478Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:56:52.9251058Z	Information	RequestLogger	0	POST /api/feed/export
+2025-10-19T20:56:52.9969964Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+WHERE `p`.`Id` IN (1, 2)
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:56:55.2081265Z	Information	RequestLogger	0	POST /api/feed/export
+2025-10-19T20:56:55.2303850Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+WHERE `p`.`Id` IN (1, 2)
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:56:56.4024526Z	Information	RequestLogger	0	POST /api/feed/export
+2025-10-19T20:56:56.4240316Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+WHERE `p`.`Id` IN (1, 2)
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:56:56.7740967Z	Information	RequestLogger	0	POST /api/feed/export
+2025-10-19T20:56:56.8113399Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+WHERE `p`.`Id` IN (1, 2)
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:57:02.6784451Z	Information	RequestLogger	0	POST /api/feed/export
+2025-10-19T20:57:02.6970132Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+WHERE `p`.`Id` IN (1, 2)
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:57:20.7695192Z	Information	RequestLogger	0	POST /api/feed/export
+2025-10-19T20:57:20.7890494Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+WHERE `p`.`Id` IN (1, 2)
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T20:58:15.9669232Z	Information	RequestLogger	0	GET /api/Product/Products
+2025-10-19T20:58:15.9966289Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+ORDER BY `p`.`Id`, `t`.`Id`
+2025-10-19T21:05:41.6893131Z	Information	RequestLogger	0	GET /api/Product/Products
+2025-10-19T21:05:41.7539224Z	Information	Microsoft.EntityFrameworkCore.Database.Command	20101	Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`AdditionalImage1`, `p`.`AdditionalImage2`, `p`.`AdditionalImage3`, `p`.`AdditionalImage4`, `p`.`Category`, `p`.`Currency`, `p`.`Description`, `p`.`MainImage`, `p`.`Manufacturer`, `p`.`Model`, `p`.`Name`, `p`.`PartNumber`, `p`.`Price`, `p`.`Quantity`, `p`.`SalePrice`, `p`.`Type`, `p`.`UserId`, `p`.`Warranty`, `t`.`Id`, `t`.`AttributeId`, `t`.`IsExtractedByAI`, `t`.`ProductId`, `t`.`Value`, `t`.`Id0`, `t`.`Code`, `t`.`IsRequired`, `t`.`IsRestricted`, `t`.`Name`, `t`.`Unit`
+FROM `Products` AS `p`
+LEFT JOIN (
+    SELECT `p0`.`Id`, `p0`.`AttributeId`, `p0`.`IsExtractedByAI`, `p0`.`ProductId`, `p0`.`Value`, `a`.`Id` AS `Id0`, `a`.`Code`, `a`.`IsRequired`, `a`.`IsRestricted`, `a`.`Name`, `a`.`Unit`
+    FROM `ProductAttributes` AS `p0`
+    INNER JOIN `Attributes` AS `a` ON `p0`.`AttributeId` = `a`.`Id`
+) AS `t` ON `p`.`Id` = `t`.`ProductId`
+ORDER BY `p`.`Id`, `t`.`Id`

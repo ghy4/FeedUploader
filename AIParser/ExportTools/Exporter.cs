@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AIParser.ExportTools
 {
-    internal class Exporter
+    internal class Exporter// to do later, use InternalEmagExporter for now
     {
     }
 }

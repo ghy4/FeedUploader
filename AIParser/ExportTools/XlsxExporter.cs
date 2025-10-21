@@ -4,7 +4,7 @@ namespace AIParser.ExportTools
 {
     public class XlsxExporter
     {
-        public static void Export(string filePath, List<List<string>> rows)
+        public static void Export(string filePath, List<List<string>> rows)// to refactor using templates, example - see InternalEmagExporter
         {
             using (var workbook = new XLWorkbook())
             {

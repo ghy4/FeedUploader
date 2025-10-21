@@ -1,427 +1,218 @@
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\appsettings.Development.json
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\appsettings.json
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.exe
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.deps.json
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.runtimeconfig.json
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.pdb
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\AutoMapper.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\BCrypt.Net-Next.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Google.Protobuf.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\K4os.Compression.LZ4.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\K4os.Compression.LZ4.Streams.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\K4os.Hash.xxHash.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.UserSecrets.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.OpenApi.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MySql.Data.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MySql.EntityFrameworkCore.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MySqlConnector.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Permissions.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Windows.Extensions.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ZstdSharp.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\comerr64.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\gssapi64.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.IO.Pipelines.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Text.Json.dll
+D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\AIParser.dll
 D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Data.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Data.pdb
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.csproj.AssemblyReference.cache
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.GeneratedMSBuildEditorConfig.editorconfig
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.AssemblyInfoInputs.cache
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.AssemblyInfo.cs
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.csproj.CoreCompileInputs.cache
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.MvcApplicationPartsAssemblyInfo.cs
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.MvcApplicationPartsAssemblyInfo.cache
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.sourcelink.json
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.build.json
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.development.json
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.FeedUploader.Server.Microsoft.AspNetCore.StaticWebAssets.props
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.build.FeedUploader.Server.props
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.FeedUploader.Server.props
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.FeedUploader.Server.props
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\scopedcss\bundle\FeedUploader.Server.styles.css
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUplo.217F92B5.Up2Date
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.dll
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\refint\FeedUploader.Server.dll
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.pdb
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.genruntimeconfig.cache
-D:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\ref\FeedUploader.Server.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ClosedXML.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\CsvHelper.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\EPPlus.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\EPPlus.Interfaces.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ExcelNumberFormat.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Humanizer.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Irony.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Mono.TextTemplating.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\SixLabors.Fonts.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.CodeDom.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Convention.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Hosting.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Runtime.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.TypedParts.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Drawing.Common.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.IO.Packaging.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\XLParser.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Newtonsoft.Json.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Scrutor.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Azure.Core.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Azure.Identity.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\EFCore.BulkExtensions.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MedallionTopologicalSort.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Data.Sqlite.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Sqlite.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.Abstractions.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.HierarchyId.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Identity.Client.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.SqlServer.Types.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MySqlConnector.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.IO.SpatiaLite.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.IO.SqlServerBytes.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Npgsql.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\SQLitePCLRaw.core.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Memory.Data.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Runtime.Caching.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\SqlServerSpatial160.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x86\native\SqlServerSpatial160.dll
-D:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\appsettings.Development.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\appsettings.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.staticwebassets.endpoints.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.exe
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.deps.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.runtimeconfig.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Server.pdb
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\AutoMapper.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Azure.Core.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Azure.Identity.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\BCrypt.Net-Next.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ClosedXML.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\CsvHelper.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\EFCore.BulkExtensions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\EPPlus.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\EPPlus.Interfaces.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ExcelNumberFormat.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Google.Protobuf.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Humanizer.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Irony.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\K4os.Compression.LZ4.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\K4os.Compression.LZ4.Streams.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\K4os.Hash.xxHash.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\MedallionTopologicalSort.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Data.Sqlite.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Sqlite.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.Abstractions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.HierarchyId.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.UserSecrets.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Identity.Client.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.OpenApi.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.SqlServer.Types.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Mono.TextTemplating.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\MySql.Data.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\MySql.EntityFrameworkCore.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\MySqlConnector.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.IO.SpatiaLite.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.IO.SqlServerBytes.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Newtonsoft.Json.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Npgsql.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Scrutor.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\SixLabors.Fonts.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\SQLitePCLRaw.core.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.CodeDom.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Convention.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Hosting.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Runtime.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Composition.TypedParts.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Drawing.Common.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.IO.Packaging.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Memory.Data.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Runtime.Caching.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Security.Permissions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\System.Windows.Extensions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\XLParser.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ZstdSharp.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\SqlServerSpatial160.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x86\native\SqlServerSpatial160.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\comerr64.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\gssapi64.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Data.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Data.pdb
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.csproj.AssemblyReference.cache
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\rpswa.dswa.cache.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.GeneratedMSBuildEditorConfig.editorconfig
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.AssemblyInfoInputs.cache
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.AssemblyInfo.cs
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.csproj.CoreCompileInputs.cache
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.MvcApplicationPartsAssemblyInfo.cs
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.MvcApplicationPartsAssemblyInfo.cache
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.sourcelink.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\rjimswa.dswa.cache.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\scopedcss\bundle\FeedUploader.Server.styles.css
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.build.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.build.json.cache
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.development.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUplo.217F92B5.Up2Date
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\refint\FeedUploader.Server.dll
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.pdb
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.genruntimeconfig.cache
-D:\Visual Studio repo\git\FeedUploader\FeedUploader.Server\obj\Debug\net8.0\ref\FeedUploader.Server.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\BCrypt.Net-Next.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Azure.Core.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Azure.Identity.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ClosedXML.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\CsvHelper.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\EFCore.BulkExtensions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\EPPlus.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\EPPlus.Interfaces.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ExcelNumberFormat.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Google.Protobuf.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Humanizer.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Irony.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\K4os.Compression.LZ4.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\K4os.Compression.LZ4.Streams.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\K4os.Hash.xxHash.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MedallionTopologicalSort.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Data.Sqlite.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.Abstractions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.HierarchyId.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.SqlServer.Types.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Mono.TextTemplating.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MySql.Data.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\MySql.EntityFrameworkCore.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.IO.SpatiaLite.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\NetTopologySuite.IO.SqlServerBytes.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Npgsql.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\Scrutor.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\SixLabors.Fonts.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\SQLitePCLRaw.core.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.CodeDom.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Convention.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Hosting.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.Runtime.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Composition.TypedParts.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Drawing.Common.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.IO.Packaging.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Memory.Data.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Runtime.Caching.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Security.Permissions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\System.Windows.Extensions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\XLParser.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ZstdSharp.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\de\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\es\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\fr\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\it\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ja\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ko\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\pt-BR\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\ru\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\SqlServerSpatial160.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x86\native\SqlServerSpatial160.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\comerr64.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\gssapi64.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\k5sprt64.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\krb5_64.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win-x64\native\krbcc64.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\FeedUploader.Data.pdb
+d:\Practica\Ex\FeedUploader.Server\bin\Debug\net8.0\AIParser.pdb
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.csproj.AssemblyReference.cache
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.GeneratedMSBuildEditorConfig.editorconfig
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.AssemblyInfoInputs.cache
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.AssemblyInfo.cs
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.csproj.CoreCompileInputs.cache
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.MvcApplicationPartsAssemblyInfo.cs
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.MvcApplicationPartsAssemblyInfo.cache
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.sourcelink.json
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.build.json
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.development.json
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.FeedUploader.Server.Microsoft.AspNetCore.StaticWebAssets.props
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.build.FeedUploader.Server.props
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.FeedUploader.Server.props
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.FeedUploader.Server.props
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\staticwebassets.pack.json
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\scopedcss\bundle\FeedUploader.Server.styles.css
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.dll
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\refint\FeedUploader.Server.dll
+d:\Practica\Ex\FeedUploader.Server\obj\Debug\net8.0\FeedUploader.Server.pdb

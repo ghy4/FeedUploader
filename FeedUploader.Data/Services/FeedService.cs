@@ -1,22 +1,27 @@
-﻿using ClosedXML.Excel;
-using CsvHelper;
-using FeedUploader.Data.Models;
+﻿using FeedUploader.Data.Models;
 using FeedUploader.Data.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
 using Microsoft.AspNetCore.Http;
 using EFCore.BulkExtensions;
-using OfficeOpenXml;
+using System.IO;
+using MySqlConnector;
+using Microsoft.Extensions.Logging;
 
 namespace FeedUploader.Data.Services
 {
 	public class FeedService : IFeedService
 	{
 		private readonly MyDbContext _dbContext;
+	private readonly IFeedParsingAdapter _feedParser;
+	private readonly IExportAdapter _exporter;
+	private readonly ILogger<FeedService> _logger;
 
-		public FeedService(MyDbContext dbContext)
+		public FeedService(MyDbContext dbContext, IFeedParsingAdapter feedParser, IExportAdapter exporter, ILogger<FeedService> logger)
 		{
 			_dbContext = dbContext;
+            _feedParser = feedParser;
+            _exporter = exporter;
+			_logger = logger;
 		}
 
 		//public async Task<ICollection<Product>> UploadFeedAsync(IFormFile file, int userId)
@@ -83,55 +88,35 @@ namespace FeedUploader.Data.Services
 			var user = await _dbContext.Users.FindAsync(userId);
 			if (user == null) throw new ArgumentException("User not found");
 
-			var currentBatch = new List<Product>();
+			const int batchSize = 500;
 			var allProducts = new List<Product>();
-			const int batchSize = 500; 
+			using var stream = file.OpenReadStream();
+			_logger.LogInformation("Starting feed upload: file={FileName}, size={Size}, userId={UserId}", file.FileName, file.Length, userId);
+			var parsed = await _feedParser.ParseAsync(stream, userId);
+			_logger.LogInformation("Parsed {Count} products from feed for userId={UserId}", parsed.Count, userId);
+			foreach (var p in parsed) p.UserId = userId;
 
-			try
+			var batch = new List<Product>(batchSize);
+			foreach (var p in parsed)
 			{
-				using var stream = file.OpenReadStream();
-				using var reader = new StreamReader(stream);
-				using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-				csv.Context.RegisterClassMap<ProductCsvMap>();
-				await csv.ReadAsync();
-				csv.ReadHeader();
-
-				while (await csv.ReadAsync())
+				batch.Add(p);
+				if (batch.Count >= batchSize)
 				{
-					var product = csv.GetRecord<Product>();
-					if (product == null) continue;
-
-					product.UserId = userId;
-					product.ExtractedAttributes = await ExtractAttributesAsync(product.Description);
-
-					if (product.ExtractedAttributes != null)
-					{
-						await ProcessAttributesAsync(product);
-					}
-
-					currentBatch.Add(product);
-
-					if (currentBatch.Count >= batchSize)
-					{
-						await BulkInsertProductsAsync(currentBatch);
-						allProducts.AddRange(currentBatch);
-						currentBatch.Clear();
-					}
+					_logger.LogInformation("Inserting batch of {BatchSize} products", batch.Count);
+					await ProcessAndInsertBatchAsync(batch);
+					allProducts.AddRange(batch);
+					batch.Clear();
 				}
-
-				if (currentBatch.Any())
-				{
-					await BulkInsertProductsAsync(currentBatch);
-					allProducts.AddRange(currentBatch);
-				}
-
-				return allProducts;
 			}
-			catch (Exception ex)
+
+			if (batch.Count > 0)
 			{
-				throw new Exception("Failed to save products: " + ex.Message, ex);
+				_logger.LogInformation("Inserting final batch of {BatchSize} products", batch.Count);
+				await ProcessAndInsertBatchAsync(batch);
+				allProducts.AddRange(batch);
 			}
+			_logger.LogInformation("Completed feed upload: inserted {Total} products for userId={UserId}", allProducts.Count, userId);
+			return allProducts;
 		}
 
 		private async Task BulkInsertProductsAsync(List<Product> products)
@@ -146,10 +131,30 @@ namespace FeedUploader.Data.Services
 				});
 				await _dbContext.SaveChangesAsync();
 			}
+			catch (MySqlException ex) when (ex.Message.Contains("Loading local data is disabled"))
+			{
+				// Fallback when MySQL LOCAL INFILE is disabled: use regular EF AddRange
+				_logger.LogWarning(ex, "MySQL LOCAL INFILE disabled; falling back to AddRange for {Count} products", products.Count);
+				await _dbContext.AddRangeAsync(products);
+				await _dbContext.SaveChangesAsync();
+			}
 			catch (DbUpdateException ex)
 			{
+				_logger.LogError(ex, "Failed to save products batch (size={Count})", products.Count);
 				throw new Exception("Failed to save products: " + ex.Message, ex);
 			}
+		}
+
+		private async Task ProcessAndInsertBatchAsync(List<Product> batch)
+		{
+			// If products already contain extracted attributes, persist them
+			foreach (var p in batch)
+			{
+				if (p.ExtractedAttributes != null)
+					await ProcessAttributesAsync(p);
+			}
+
+			await BulkInsertProductsAsync(batch);
 		}
 
 		private async Task ProcessAttributesAsync(Product product)
@@ -184,63 +189,43 @@ namespace FeedUploader.Data.Services
 			}
 		}
 
-		private sealed class ProductCsvMap : CsvHelper.Configuration.ClassMap<Product>
-		{
-			public ProductCsvMap()
-			{
-				Map(m => m.Id).Name("id");
-				Map(m => m.Name).Name("name");
-				Map(m => m.Description).Name("description");
-				Map(m => m.Model).Name("model");
-				Map(m => m.Manufacturer).Name("manufacturer");
-				Map(m => m.Category).Name("category");
-				Map(m => m.Price).Name("price");
-				Map(m => m.SalePrice).Name("sale_price");
-				Map(m => m.Currency).Name("currency");
-				Map(m => m.Quantity).Name("quantity");
-				Map(m => m.Warranty).Name("warranty");
-				Map(m => m.MainImage).Name("image");
-				Map(m => m.AdditionalImage1).Name("additional_image_1");
-				Map(m => m.AdditionalImage2).Name("additional_image_2");
-				Map(m => m.AdditionalImage3).Name("additional_image_3");
-				Map(m => m.AdditionalImage4).Name("additional_image_4");
-				Map(m => m.Type).Name("type");
-			}
-		}
+		// CSV mapping removed; parsing is delegated to adapter.
 
 		public async Task<byte[]> GenerateExcelAsync(ICollection<int> productIds)
 		{
-			using var package = new ExcelPackage();
-			var worksheet = package.Workbook.Worksheets.Add("Template");
-
-			// eMAG template headers
-			worksheet.Cells[1, 1].Value = "part_number";
-			worksheet.Cells[1, 2].Value = "name";
-			worksheet.Cells[1, 3].Value = "main_image_url";
-			worksheet.Cells[1, 4].Value = "Tip produs: [5704]";
-			worksheet.Cells[1, 5].Value = "Suprafata lucru: [8541]";
-			worksheet.Cells[1, 6].Value = "Unealta compatibila: [8624]";
-			worksheet.Cells[1, 7].Value = "Culoare: [5401]";
-
 			var products = await _dbContext.Products
 				.Include(p => p.Attributes)
 				.ThenInclude(pa => pa.Attribute)
 				.Where(p => productIds.Contains(p.Id))
 				.ToListAsync();
 
-			for (int i = 0; i < products.Count; i++)
+			var map = new Dictionary<string, string>
 			{
-				var product = products[i];
-				worksheet.Cells[i + 2, 1].Value = product.Model;
-				worksheet.Cells[i + 2, 2].Value = product.Name;
-				worksheet.Cells[i + 2, 3].Value = product.MainImage;
-				worksheet.Cells[i + 2, 4].Value = product.Attributes.FirstOrDefault(a => a.Attribute?.Code == "[5704]")?.Value ?? "Disc";
-				worksheet.Cells[i + 2, 5].Value = product.Attributes.FirstOrDefault(a => a.Attribute?.Code == "[8541]")?.Value ?? "Metal";
-				worksheet.Cells[i + 2, 6].Value = product.Attributes.FirstOrDefault(a => a.Attribute?.Code == "[8624]")?.Value ?? "Polizor unghiular";
-				worksheet.Cells[i + 2, 7].Value = product.Attributes.FirstOrDefault(a => a.Attribute?.Code == "[5401]")?.Value ?? "Multicolor";
-			}
+				{ "part_number", "PartNumber" },
+				{ "vendor_ext_id", "Id" },
+				{ "name", "Name" },
+				{ "description", "Description" },
+				{ "brand", "Manufacturer" },
+				{ "model", "Model" },
+				{ "category", "Category" },
+				{ "sale_price", "Price" },
+				{ "offer_currency", "Currency" },
+				{ "stock", "Quantity" },
+				{ "warranty", "Warranty" },
+				{ "main_image_url", "MainImage" },
+				{ "other_image_url1", "AdditionalImage1" },
+				{ "other_image_url2", "AdditionalImage2" },
+				{ "other_image_url3", "AdditionalImage3" },
+				{ "other_image_url4", "AdditionalImage4" }
+			};
+			var defaults = new Dictionary<string, string>
+			{
+				{ "vat_rate", "0.2" },
+				{ "status", "1" },
+				{ "source_language", "RO_ro" }
+			};
 
-			return package.GetAsByteArray();
+			return await _exporter.ExportAsync(products, map, defaults);
 		}
 
 		public async Task<bool> ClearDatabaseAsync()
@@ -261,18 +246,7 @@ namespace FeedUploader.Data.Services
 			_dbContext.ChangeTracker.Clear();
 			return true;
 		}
-
-		private async Task<Dictionary<string, string>> ExtractAttributesAsync(string description)
-		{
-			// Placeholder for AI service (e.g., Azure NLP)
-			return await Task.FromResult(new Dictionary<string, string>
-			{
-				{ "[5704]", "Disc" },
-				{ "[8541]", "Metal" },
-				{ "[8624]", "Polizor unghiular" },
-				{ "[5401]", "Multicolor" }
-			});
-		}
+		// No manual attribute extraction fallback.
 
 		private string GetAttributeName(string code) => code switch
 		{

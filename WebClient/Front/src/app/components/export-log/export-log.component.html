@@ -98,6 +98,29 @@
         </div>
 
         <div class="card-body-modern">
+          <!-- Server Logs quick access -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="mb-0">Loguri server (ultimele {{ recentLines.length }} linii)</h6>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-secondary" (click)="refreshLogs()" [disabled]="loadingLogs">
+                  <i class="bi bi-arrow-repeat"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-primary" (click)="exportLogs()" [disabled]="downloading">
+                  <i class="bi bi-download"></i>
+                  Descarcă toate
+                </button>
+              </div>
+            </div>
+            <div class="small text-muted mb-2" *ngIf="logFiles.length > 0">
+              Fișiere disponibile:
+              <span class="badge bg-light text-dark border me-1" *ngFor="let f of logFiles">
+                <a href="javascript:void(0)" (click)="downloadLog(f)">{{ f.name }}</a>
+              </span>
+            </div>
+            <pre class="p-2 bg-light rounded" style="max-height: 200px; overflow:auto;">{{ recentLines.join('\n') }}</pre>
+          </div>
+
           <div class="table-responsive">
             <table class="table table-modern">
               <thead>

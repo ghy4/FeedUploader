@@ -25,6 +25,8 @@ export class FeedManagementComponent implements OnInit {
   isDragOver = false;
   isLoading = false;
   uploadProgress = 0;
+  private uploadProgressTimer: any;
+  private isProcessingServer = false;
 
   // Search and filters
   searchTerm = '';
@@ -135,7 +137,18 @@ export class FeedManagementComponent implements OnInit {
     this.isLoading = true;
     this.feedService.uploadFile(this.selectedFile).subscribe({
       next: (result) => {
-        this.uploadProgress = result.progress;
+        const p = Math.max(0, result.progress ?? 0);
+        // Cap transfer progress to 90% and show a pulse for server-side processing until response completes
+        if (p >= 100) {
+          this.uploadProgress = 100;
+        } else if (p >= 90) {
+          if (!this.isProcessingServer) {
+            this.uploadProgress = 90;
+            this.startUploadPulse();
+          }
+        } else {
+          this.uploadProgress = p;
+        }
         if (result.products) {
           // Normalize potential $values wrapper
           const incomingRaw: any = result.products as any;
@@ -157,15 +170,20 @@ export class FeedManagementComponent implements OnInit {
           this.filterProducts();
           this.activity.add({ type: 'upload', description: `Upload feed (${incoming.length} produse)`, status: 'success', date: new Date() });
         }
-        if (result.progress === 100) {
-          this.isLoading = false;
-        }
       },
       error: (err) => {
         this.isLoading = false;
+        this.stopUploadPulse();
+        this.uploadProgress = 0;
         alert('Eroare la încărcarea fișierului!');
         console.error('Upload error:', err);
         this.activity.add({ type: 'upload', description: 'Upload feed eșuat', status: 'error', date: new Date() });
+      },
+      complete: () => {
+        // Request completed successfully (regardless of body shape)
+        this.stopUploadPulse();
+        this.uploadProgress = 100;
+        this.isLoading = false;
       }
     });
   }
@@ -472,4 +490,24 @@ export class FeedManagementComponent implements OnInit {
 
   // Math utility for template
   Math = Math;
+
+  private startUploadPulse(): void {
+    this.stopUploadPulse();
+    this.isProcessingServer = true;
+    this.uploadProgressTimer = setInterval(() => {
+      if (this.uploadProgress < 99) {
+        // ease toward 99%
+        const delta = Math.max(0.5, Math.round((99 - this.uploadProgress) * 0.1));
+        this.uploadProgress = Math.min(99, this.uploadProgress + delta);
+      }
+    }, 500);
+  }
+
+  private stopUploadPulse(): void {
+    if (this.uploadProgressTimer) {
+      clearInterval(this.uploadProgressTimer);
+      this.uploadProgressTimer = null;
+    }
+    this.isProcessingServer = false;
+  }
 } 

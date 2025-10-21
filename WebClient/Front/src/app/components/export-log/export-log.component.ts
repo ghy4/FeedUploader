@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LogsService, LogFileInfo } from '../../services/logs.service';
+import { ExportHistoryService, ExportJob as PersistedExportJob, LogEntry as PersistedLogEntry } from '../../services/export-history.service';
 
 interface ExportJob {
   id: string;
@@ -50,6 +52,11 @@ export class ExportLogComponent implements OnInit {
   exportJobs: ExportJob[] = [];
   filteredExportJobs: ExportJob[] = [];
   selectedJob: ExportJob | null = null;
+  // Server logs state
+  logFiles: LogFileInfo[] = [];
+  recentLines: string[] = [];
+  loadingLogs = false;
+  downloading = false;
   
   marketplaces: string[] = ['eMAG', 'Altex', 'Okazii', 'OLX'];
   
@@ -70,15 +77,52 @@ export class ExportLogComponent implements OnInit {
   // Error analysis
   errorAnalysis: ErrorAnalysis[] = [];
 
+  constructor(private logs: LogsService, private exportHistory: ExportHistoryService) {}
+
   ngOnInit(): void {
-    this.loadMockData();
+    // Load export history from localStorage via service
+    this.loadHistory();
     this.calculateStatistics();
     this.generateErrorAnalysis();
+    this.refreshLogs();
+    // Subscribe to any future changes
+    this.exportHistory.changes$.subscribe(() => {
+      this.loadHistory();
+      this.calculateStatistics();
+    });
   }
 
-  loadMockData(): void {
-    this.exportJobs = [];
+  refreshLogs(): void {
+    this.loadingLogs = true;
+    this.logs.listFiles().subscribe({
+      next: files => this.logFiles = files,
+      error: () => this.logFiles = []
+    });
+    this.logs.getRecent(300).subscribe({
+      next: lines => this.recentLines = lines,
+      error: () => this.recentLines = [],
+      complete: () => this.loadingLogs = false
+    });
+  }
+
+  loadHistory(): void {
+    const jobs = this.exportHistory.getAll();
+    // Map persisted jobs into component ExportJob shape
+    this.exportJobs = jobs.map(j => ({
+      id: j.id,
+      name: j.name,
+      marketplace: j.marketplace,
+      startTime: j.startTime,
+      endTime: j.endTime,
+      status: j.status,
+      progress: j.progress,
+      totalProducts: j.totalProducts,
+      successfulProducts: j.successfulProducts,
+      failedProducts: j.failedProducts,
+      logEntries: j.logEntries as unknown as LogEntry[]
+    }));
     this.filteredExportJobs = [...this.exportJobs];
+    this.filterJobs();
   }
 
   calculateStatistics(): void {
@@ -135,6 +179,7 @@ export class ExportLogComponent implements OnInit {
   deleteJob(job: ExportJob): void {
     if (confirm(`Ești sigur că vrei să ștergi exportul ${job.name}?`)) {
       this.exportJobs = this.exportJobs.filter(j => j.id !== job.id);
+      this.exportHistory.remove(job.id);
       this.filterJobs();
       this.calculateStatistics();
       
@@ -145,18 +190,39 @@ export class ExportLogComponent implements OnInit {
   }
 
   clearLogs(): void {
-    if (confirm('Ești sigur că vrei să ștergi toate log-urile de export?')) {
-      this.exportJobs = [];
-      this.filteredExportJobs = [];
-      this.selectedJob = null;
-      this.calculateStatistics();
-    }
+    if (!confirm('Ești sigur că vrei să ștergi toate log-urile serverului?')) return;
+    this.logs.clear().subscribe({
+      next: () => {
+        this.refreshLogs();
+        alert('Log-urile au fost șterse.');
+      },
+      error: () => alert('Eroare la ștergerea log-urilor')
+    });
   }
 
   exportLogs(): void {
-    // Simulate export of logs
-    const filename = `export_logs_${new Date().toISOString().split('T')[0]}.csv`;
-    alert(`Log-urile au fost exportate în fișierul: ${filename}`);
+    this.downloading = true;
+    this.logs.downloadAll().subscribe({
+      next: blob => this.saveBlob(blob, `logs_${new Date().toISOString().replace(/[:T]/g,'-').split('.')[0]}.zip`),
+      error: () => alert('Eroare la descărcarea pachetului de log-uri'),
+      complete: () => this.downloading = false
+    });
+  }
+
+  downloadLog(file: LogFileInfo): void {
+    this.logs.download(file.name.replace('log_','').replace('.log','')).subscribe({
+      next: blob => this.saveBlob(blob, file.name),
+      error: () => alert('Eroare la descărcarea log-ului')
+    });
+  }
+
+  private saveBlob(blob: Blob, filename: string) {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url);
   }
 
   // Utility methods

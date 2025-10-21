@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FeedUploader.Data\FeedUploader.Data.csproj" />
+  <ProjectReference Include="..\AIParser\AIParser.csproj" />
   </ItemGroup>
 
 </Project>
