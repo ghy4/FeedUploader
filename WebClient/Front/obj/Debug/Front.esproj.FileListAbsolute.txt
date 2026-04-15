@@ -1,3 +1,4 @@
 D:\Practica\Front\Front\obj\Debug\Front.esproj.CoreCompileInputs.cache
 D:\Visual Studio repo\git\FeedUploader\WebClient\Front\obj\Debug\Front.esproj.CoreCompileInputs.cache
 d:\Practica\Ex\WebClient\Front\obj\Debug\Front.esproj.CoreCompileInputs.cache
+C:\Users\gbruz\source\repos\FeedUploader\WebClient\Front\obj\Debug\Front.esproj.CoreCompileInputs.cache

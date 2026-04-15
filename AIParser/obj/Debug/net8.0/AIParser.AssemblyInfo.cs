@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("7474757a-3a3d-4449-9a62-da3b9199f30f")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("AIParser")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55c7e4db9613efb593123435e691119a92b90888")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21f07c4d5bc0d4b2dd551a9754d5fcbd56ab16a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("AIParser")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AIParser")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

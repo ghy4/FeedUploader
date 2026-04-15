@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gh8LIT1kPys=",
+  "dgSpecHash": "SLJCmAbG8fs=",
   "success": true,
-  "projectFilePath": "D:\\Practica\\Update\\Ex\\FeedUploader.Data\\FeedUploader.Data.csproj",
+  "projectFilePath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gbruz\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\gbruz\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

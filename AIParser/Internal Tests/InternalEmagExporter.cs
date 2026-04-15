@@ -52,8 +52,15 @@ public static class InternalEmagExporter
                 // 2) Dacă e atribut specific categoriei
                 if (val == null)
                 {
-                    var attr = product.Attributes
-                        .FirstOrDefault(a => emagCode.Contains(a.Attribute?.Code));
+                    var normalizedEmagCode = emagCode.Trim().Trim('[', ']');
+                    var attr = product.Attributes.FirstOrDefault(a =>
+                        !string.IsNullOrWhiteSpace(a.Attribute?.Code) &&
+                        (
+                            string.Equals(a.Attribute.Code, emagCode, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(a.Attribute.Code, normalizedEmagCode, StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals($"[{a.Attribute.Code}]", emagCode, StringComparison.OrdinalIgnoreCase)
+                        ));
+
                     if (attr != null)
                         val = attr.Value;
                 }

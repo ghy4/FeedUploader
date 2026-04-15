@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+vOQe2k1UCo=",
+  "dgSpecHash": "BgsnYtdMQkM=",
   "success": true,
-  "projectFilePath": "D:\\Practica\\Update\\Ex\\FeedUploader.Server\\FeedUploader.Server.csproj",
+  "projectFilePath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Server\\FeedUploader.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gbruz\\.nuget\\packages\\automapper\\15.0.1\\automapper.15.0.1.nupkg.sha512",
     "C:\\Users\\gbruz\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
@@ -207,5 +207,18 @@
     "C:\\Users\\gbruz\\.nuget\\packages\\xlparser\\1.5.2\\xlparser.1.5.2.nupkg.sha512",
     "C:\\Users\\gbruz\\.nuget\\packages\\zstdsharp.port\\0.7.1\\zstdsharp.port.0.7.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'AutoMapper' 15.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Server\\FeedUploader.Server.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Server\\FeedUploader.Server.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

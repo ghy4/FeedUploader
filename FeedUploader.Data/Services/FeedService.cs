@@ -155,19 +155,39 @@ namespace FeedUploader.Data.Services
 			}
 
 			await BulkInsertProductsAsync(batch);
+
+			var productAttributes = batch
+				.SelectMany(p => p.Attributes
+					.Where(a => a.AttributeId > 0)
+					.Select(a => new ProductAttribute
+					{
+						ProductId = p.Id,
+						AttributeId = a.AttributeId,
+						Value = a.Value,
+						IsExtractedByAI = a.IsExtractedByAI
+					}))
+				.GroupBy(pa => new { pa.ProductId, pa.AttributeId, pa.Value })
+				.Select(g => g.First())
+				.ToList();
+
+			if (productAttributes.Count > 0)
+			{
+				await _dbContext.ProductAttributes.AddRangeAsync(productAttributes);
+				await _dbContext.SaveChangesAsync();
+			}
 		}
 
 		private async Task ProcessAttributesAsync(Product product)
 		{
-			foreach (var attr in product.ExtractedAttributes)
+           foreach (var attr in product.ExtractedAttributes)
 			{
-				var attribute = await _dbContext.Attributes.FirstOrDefaultAsync(a => a.Code == attr.Key);
+               var attribute = await _dbContext.Attributes.FirstOrDefaultAsync(a => a.Code == attr.Key || a.Name == attr.Key);
 				if (attribute == null)
 				{
 					attribute = new Models.Attribute
 					{
 						Code = attr.Key,
-						Name = GetAttributeName(attr.Key),
+                      Name = GetAttributeName(attr.Key) == "Unknown" ? attr.Key : GetAttributeName(attr.Key),
 						IsRequired = IsRequiredAttribute(attr.Key),
 						IsRestricted = IsRestrictedAttribute(attr.Key),
 						Unit = GetAttributeUnit(attr.Key),

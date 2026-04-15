@@ -9,7 +9,7 @@ namespace AIParser
     public class AIService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey = "sk-proj--";//api key removed for security reasons
+        private readonly string _apiKey;
 
         /* public AIService(IConfiguration configuration) // unul din constructori trebuie sa fie activ, daca este config pune aista , sau acel de jos daca nui
          {

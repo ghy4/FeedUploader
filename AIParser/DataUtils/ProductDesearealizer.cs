@@ -92,6 +92,9 @@ namespace AIParser.DataUtils
                     product.Name = GetString("Name");
                     product.Description = GetString("Description");
                     product.Model = GetString("Model");
+                    product.PartNumber = GetString("Cod produs");
+                    if (string.IsNullOrWhiteSpace(product.PartNumber))
+                        product.PartNumber = GetString("Code");
                     product.Manufacturer = GetString("Manufacturer");
                     product.Category = GetString("Category");
 
@@ -144,6 +147,8 @@ namespace AIParser.DataUtils
                             extractedAttrs[prop.Name] = prop.Value.GetString() ?? string.Empty;
                     }
 
+                    var extractedAttrsByCode = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
                     // Создаём ProductAttribute для каждого извлечённого атрибута.
                     foreach (var kvp in extractedAttrs)
                     {
@@ -163,15 +168,21 @@ namespace AIParser.DataUtils
                             // если нашли запись в справочнике — заполняем Attribute ссылкой (или AttributeId)
                             pa.Attribute = found;
                             pa.AttributeId = found.Id;
+                            if (!string.IsNullOrWhiteSpace(found.Code) && !extractedAttrsByCode.ContainsKey(found.Code))
+                                extractedAttrsByCode[found.Code] = attrValue;
                         }
                         else
                         {
                             // временный объект-описание, чтобы не терять имя — окончательный маппинг будет в FeedExtractor
                             pa.Attribute = new Attribute { Name = attrName, Code = attrName.ToLowerInvariant() };
+                            if (!extractedAttrsByCode.ContainsKey(attrName))
+                                extractedAttrsByCode[attrName] = attrValue;
                         }
 
                         product.Attributes.Add(pa);
                     }
+
+                    product.ExtractedAttributes = extractedAttrsByCode;
 
                     // Валидация: проверяем обязательные атрибуты из availableAttributes (IsRequired == true)
                     var requiredMissing = new List<string>();
@@ -319,6 +330,9 @@ namespace AIParser.DataUtils
                         product.Name = GetString("Name");
                         product.Description = GetString("Description");
                         product.Model = GetString("Model");
+                        product.PartNumber = GetString("PartNumber");
+                        if (string.IsNullOrWhiteSpace(product.PartNumber))
+                            product.PartNumber = GetString("Code");
                         product.Manufacturer = GetString("Manufacturer");
                         product.Category = GetString("Category");
                         product.Price = GetDecimalSafe(productElement, "Price", 0m);
@@ -369,6 +383,8 @@ namespace AIParser.DataUtils
                                 extractedAttrs[prop.Name] = prop.Value.ValueKind == JsonValueKind.String ? prop.Value.GetString() ?? string.Empty : prop.Value.ToString();
                         }
 
+                        var extractedAttrsByCode = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
                         // Создаём ProductAttribute только для известных атрибутов (из availableAttributes)
                         foreach (var kvp in extractedAttrs)
                         {
@@ -387,14 +403,20 @@ namespace AIParser.DataUtils
                                     AttributeId = found.Id
                                 };
                                 product.Attributes.Add(pa);
+                                if (!string.IsNullOrWhiteSpace(found.Code) && !extractedAttrsByCode.ContainsKey(found.Code))
+                                    extractedAttrsByCode[found.Code] = attrValue;
                             }
                             else
                             {
                                 // НЕ добавляем неизвестные атрибуты.
                                 // Записываем в валидационные замечания, чтобы тест/лог мог увидеть проблему.
                                 result.ValidationErrors.Add($"Unknown attribute (skipped): {attrName}");
+                                if (!extractedAttrsByCode.ContainsKey(attrName))
+                                    extractedAttrsByCode[attrName] = attrValue;
                             }
                         }
+
+                        product.ExtractedAttributes = extractedAttrsByCode;
 
                         // Проверка обязательных атрибутов (IsRequired == true)
                         var requiredMissing = new List<string>();
