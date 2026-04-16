@@ -326,13 +326,10 @@ namespace AIParser.DataUtils
                                 return p.GetString() ?? string.Empty;
                             return string.Empty;
                         }
-
+                        product.PartNumber = GetString("PartNumber");
                         product.Name = GetString("Name");
                         product.Description = GetString("Description");
-                        product.Model = GetString("Model");
-                        product.PartNumber = GetString("PartNumber");
-                        if (string.IsNullOrWhiteSpace(product.PartNumber))
-                            product.PartNumber = GetString("Code");
+                        product.Model = GetString("Model");  
                         product.Manufacturer = GetString("Manufacturer");
                         product.Category = GetString("Category");
                         product.Price = GetDecimalSafe(productElement, "Price", 0m);

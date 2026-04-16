@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\AIParser\\AIParser.csproj": {}
+    "F:\\Visual Studio repo\\FeedUploader\\AIParser\\AIParser.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\AIParser\\AIParser.csproj": {
+    "F:\\Visual Studio repo\\FeedUploader\\AIParser\\AIParser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\AIParser\\AIParser.csproj",
+        "projectUniqueName": "F:\\Visual Studio repo\\FeedUploader\\AIParser\\AIParser.csproj",
         "projectName": "AIParser",
-        "projectPath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\AIParser\\AIParser.csproj",
-        "packagesPath": "C:\\Users\\gbruz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\AIParser\\obj\\",
+        "projectPath": "F:\\Visual Studio repo\\FeedUploader\\AIParser\\AIParser.csproj",
+        "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+        "outputPath": "F:\\Visual Studio repo\\FeedUploader\\AIParser\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gbruz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj": {
-                "projectPath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj"
+              "F:\\Visual Studio repo\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj": {
+                "projectPath": "F:\\Visual Studio repo\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj"
               }
             }
           }
@@ -48,7 +48,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -79,24 +79,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj": {
+    "F:\\Visual Studio repo\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj",
+        "projectUniqueName": "F:\\Visual Studio repo\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj",
         "projectName": "FeedUploader.Data",
-        "projectPath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj",
-        "packagesPath": "C:\\Users\\gbruz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gbruz\\source\\repos\\FeedUploader\\FeedUploader.Data\\obj\\",
+        "projectPath": "F:\\Visual Studio repo\\FeedUploader\\FeedUploader.Data\\FeedUploader.Data.csproj",
+        "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+        "outputPath": "F:\\Visual Studio repo\\FeedUploader\\FeedUploader.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gbruz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -123,7 +123,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -198,7 +198,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

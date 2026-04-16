@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIParser", "AIParser\AIPars
 		{02768D97-03FF-4164-A276-B631C67EDB1A} = {02768D97-03FF-4164-A276-B631C67EDB1A}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIParser.Runner", "AIParser.Runner\AIParser.Runner.csproj", "{4AAEDDCA-35EC-4E74-9482-3ADA59114D67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{CBFCDFA5-6536-1598-2B94-8692BAF7578F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBFCDFA5-6536-1598-2B94-8692BAF7578F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBFCDFA5-6536-1598-2B94-8692BAF7578F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AAEDDCA-35EC-4E74-9482-3ADA59114D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AAEDDCA-35EC-4E74-9482-3ADA59114D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AAEDDCA-35EC-4E74-9482-3ADA59114D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AAEDDCA-35EC-4E74-9482-3ADA59114D67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

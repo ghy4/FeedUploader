@@ -4,7 +4,7 @@ using System.Reflection;
 
 public static class InternalEmagExporter
 {
-    public async static void ExportOnTemplate(
+    public static void ExportOnTemplate(
         List<Product> products,
         string pathTemplate,
         string pathOut,
@@ -23,7 +23,7 @@ public static class InternalEmagExporter
         // Citim codurile de coloană din rândul 2
         var emagCodes = new List<string>();
         for (int c = 1; c <= lastCol; c++)
-            emagCodes.Add(ws.Cell(codeRow, c).GetString().Trim());
+            emagCodes.Add(Normalize(ws.Cell(codeRow, c).GetString()));
         
         // Prima linie liberă după antet
         int startRow = ws.LastRowUsed().RowNumber() + 1;
@@ -52,13 +52,18 @@ public static class InternalEmagExporter
                 // 2) Dacă e atribut specific categoriei
                 if (val == null)
                 {
-                    var normalizedEmagCode = emagCode.Trim().Trim('[', ']');
+                    // Очищаем входной emagCode от лишних пробелов
+                    var searchKey = emagCode.Trim();
+
                     var attr = product.Attributes.FirstOrDefault(a =>
-                        !string.IsNullOrWhiteSpace(a.Attribute?.Code) &&
+                        a.Attribute != null && !string.IsNullOrWhiteSpace(a.Attribute.Name) &&
                         (
-                            string.Equals(a.Attribute.Code, emagCode, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(a.Attribute.Code, normalizedEmagCode, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals($"[{a.Attribute.Code}]", emagCode, StringComparison.OrdinalIgnoreCase)
+                            string.Equals(a.Attribute.Name, searchKey, StringComparison.OrdinalIgnoreCase) ||
+
+  
+                            string.Equals($"[{a.Attribute.Code}]", searchKey, StringComparison.OrdinalIgnoreCase) ||
+
+                            string.Equals($"{a.Attribute.Name}: [{a.Attribute.Code}]", searchKey, StringComparison.OrdinalIgnoreCase)
                         ));
 
                     if (attr != null)
@@ -80,4 +85,6 @@ public static class InternalEmagExporter
         wb.SaveAs(pathOut);
         return;
     }
+    static string Normalize(string s) =>
+    s?.Trim().ToLowerInvariant();
 }

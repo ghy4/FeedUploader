@@ -70,7 +70,7 @@ namespace AIParser.Internal_Tests
                     .Replace("{internalCategory}", internalCategory)
                     .Replace("{req}", reqAttrs.Any() ? string.Join(", ", reqAttrs) : "none")
                     .Replace("{other}", otherAttrs.Any() ? string.Join(", ", otherAttrs) : "none");
-                // Call AI
+
                 string aiResponse;
                 try
                 {

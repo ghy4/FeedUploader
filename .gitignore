@@ -103,3 +103,9 @@ FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.AssemblyInfo.cs
 /FeedUploader.Server/obj/Debug/net8.0/EndpointInfo/FeedUploader.Server.json
 /FeedUploader.Server/obj/project.assets.json
 /FeedUploader.Data/obj/Debug/net8.0/FeedUploader.Data.genruntimeconfig.cache
+*.cache
+/AIParser.Runner/bin
+/AIParser.Runner/obj
+/AIParser.Runner/TestData
+/FeedUploader.Server/obj
+/FeedUploader.Server/obj
